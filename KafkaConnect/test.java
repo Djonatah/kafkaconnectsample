@@ -1,0 +1,14 @@
+- name, age, location
+- family,
+- bdi
+- technologies
+    - java,
+    - relational databases
+    - git, mercurial, svn
+    - maven / ant / jenkins
+    - junit / mockito
+    - kafka,
+    - tomcat / webblogic
+- driven and focused professional,
+- eager to learn new technologies
+- i feel  thrileed by facing new challenges

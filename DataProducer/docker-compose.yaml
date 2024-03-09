@@ -1,0 +1,8 @@
+services:
+  server_1:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password123#"
+    ports:
+      - "1433:1433"

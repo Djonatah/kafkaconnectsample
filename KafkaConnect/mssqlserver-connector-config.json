@@ -1,0 +1,39 @@
+{
+  "name": "sample-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+    "database.hostname": "192.168.16.2",
+    "database.port": "1433",
+    "database.user": "sa",
+    "database.password": "Password123#",
+    "database.names": "test_producer",
+    "topic.prefix": "data_producer_stream",
+    "table.include.list": "dbo.client",
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:9092"
+  }
+}
+
+//
+//{
+//  "name": "sample-connector",
+//  "config": {
+//    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+//    "database.hostname": "192.168.16.2",
+//    "database.port": "1433",
+//    "database.trustServerCertificate": "true",
+//    "database.user": "sa",
+//    "database.password": "Password123#",
+//    "database.names": "test_producer",
+//    "topic.prefix": "data_producer_stream",
+//    "table.include.list": "dbo.client",
+//    "schema.history.internal.kafka.bootstrap.servers": "localhost:9092",
+//    "schema.history.internal.kafka.topic": "schema-changes.test_producer",
+//    "transforms": "unwrap,addTopicPrefix",
+//    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+//    "transforms.addTopicPrefix.type": "org.apache.kafka.connect.transforms.RegexRouter",
+//    "transforms.addTopicPrefix.regex": "(.*)",
+//    "transforms.addTopicPrefix.replacement": "mssqlserver-transform-$1",
+//    "database.ssl.truststore": "/home/djonatah/dev/keystores/kafkaconnectkeystore",
+//    "database.ssl.truststore.password": "kafka10!"
+//  }
+//}

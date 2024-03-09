@@ -1,0 +1,11 @@
+services:
+  test-ubuntu-dc:
+    build: .
+    command:
+    - bash
+    - -c
+    - |
+      curl "https://www.google.com"
+      touch test-file.txtf
+      echo "cu3t4" > test-file.txt
+      tail -f /dev/null

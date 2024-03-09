@@ -1,0 +1,16 @@
+{
+  "name": "mssql-jdbc-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+    "tasks.max": "1",
+    "connection.url": "jdbc:sqlserver://localhost:14331/data_reader",
+    "connection.username": "sa",
+    "connection.password": "Access1234#",
+    "insert.mode": "upsert",
+    "delete.enabled": "true",
+    "primary.key.mode": "record_key",
+    "schema.evolution": "basic",
+    "database.time_zone": "UTC",
+    "topics": "data_producer_stream"
+  }
+}
