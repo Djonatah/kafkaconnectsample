@@ -5,7 +5,6 @@ services:
       - app-tier
     ports:
       - '9092:9092'
-      - '8083:8083'
     environment:
       - KAFKA_CFG_NODE_ID=0
       - KAFKA_CFG_PROCESS_ROLES=controller,broker
@@ -13,35 +12,42 @@ services:
       - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
       - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+  kafka-connect:
+    build: .
+    depends_on:
+      - kafka
+    networks:
+      - app-tier
+    ports:
+      - '8083:8083'
+    command: /opt/bitnami/kafka/bin/connect-standalone.sh /opt/bitnami/kafka/config/connect-standalone.properties
   kafka_connect_config:
     image: ubuntu:latest
     networks:
       - app-tier
     depends_on:
-    - kafka
+    - kafka-connect
     command:
       - bash
       - -c
       - |
-        echo "Starting kafka connect"
-        
         echo "Waiting for Kafka to be ready"
-        apt-get update 
+        apt-get update
         apt-get install -y curl
         while : ; do
-          curl_status=$$(curl -s -o /dev/null -w "%{http_code}" kafka:8083/connectors)
+          curl_status=$$(curl -s -o /dev/null -w "%{http_code}" kafka-connect:8083/connectors)
           echo "$$(date) Kafka Connect HTTP state: $$curl_status (waiting for 200)"
           if [ $$curl_status -eq 200 ]; then
             break
           fi
           sleep 5
         done
-        
+
         echo "Registering debezium mssqlserver  connector"
-        curl -s -X PUT -H  "Content-Type:application/json" kafka:8083/connectors/client-table-connector/config \
+        curl -s -X POST -H  "Content-Type: application/json" kafka-connect:8083/connectors \
         -d '{
               "name": "client-table-connector",
-              ""config"": {
+              "config": {
                 "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
                 "database.hostname": "192.168.16.2",
                 "database.port": "1433",
@@ -53,38 +59,40 @@ services:
                 "schema.history.internal.kafka.bootstrap.servers": "kafka:9092"
               }
             }'
-        
-        echo "Registering debezium jdbc sink connector"
-        curl -s -X PUT -H  "Content-Type:application/json" kafka:8083/connectors/client-table-connector/config \
-        -d '{
-            "name": "mssql-jdbc-connector",
-            "config": {
-              "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
-              "tasks.max": "1",
-              "connection.url": "jdbc:sqlserver://localhost:14331/data_reader",
-              "connection.username": "sa",
-              "connection.password": "Access1234#",
-              "insert.mode": "upsert",
-              "delete.enabled": "true",
-              "primary.key.mode": "record_key",
-              "schema.evolution": "basic",
-              "database.time_zone": "UTC",
-              "topics": "data_producer_stream"
-            }
-          }'
-        
-        sleep infinity
-  kafka-ui:
-    image: provectuslabs/kafka-ui
-    networks:
-      - app-tier
-    environment:
-      KAFKA_CLUSTERS_0_NAME: local
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
-    ports:
-      - '8080:8080'
-    depends_on:
-      - kafka
+#
+#        echo "Registering debezium jdbc sink connector"
+#        curl -s -X PUT -H  "Content-Type:application/json" kafka:8083/connectors/client-table-connector/config \
+#        -d '{
+#            "name": "mssql-jdbc-connector",
+#            "config": {
+#              "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+#              "tasks.max": "1",
+#              "connection.url": "jdbc:sqlserver://localhost:14331/data_reader",
+#              "connection.username": "sa",
+#              "connection.password": "Access1234#",
+#              "insert.mode": "upsert",
+#              "delete.enabled": "true",
+#              "primary.key.mode": "record_key",
+#              "schema.evolution": "basic",
+#              "database.time_zone": "UTC",
+#              "topics": "data_producer_stream"
+#            }
+#          }'
+#
+#        sleep infinity
+#  kafka-ui:
+#    image: provectuslabs/kafka-ui
+#    networks:
+#      - app-tier
+#    environment:
+#      KAFKA_CLUSTERS_0_NAME: local
+#      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+#    ports:
+#      - '8080:8080'
+#    depends_on:
+#      - kafka
 networks:
+  name: testdj
+
   app-tier:
     driver: bridge

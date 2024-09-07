@@ -1,4 +1,5 @@
 
+
 create table client(
     uuid varchar(50) primary key,
     name varchar(100) not null,

@@ -1,0 +1,1061 @@
+#0 building with "default" instance using docker driver
+
+#1 [kafka internal] load build definition from Dockerfile
+#1 transferring dockerfile: 887B done
+#1 DONE 0.0s
+
+#2 [kafka internal] load .dockerignore
+#2 transferring context: 2B done
+#2 DONE 0.0s
+
+#3 [kafka internal] load metadata for docker.io/bitnami/kafka:latest
+#3 DONE 0.0s
+
+#4 [kafka 1/6] FROM docker.io/bitnami/kafka:latest
+#4 DONE 0.0s
+
+#5 [kafka 2/6] RUN mkdir -p /opt/bitnami/kafka/plugins     && apt-get update -y      && apt-get install -y curl
+#5 CACHED
+
+#6 [kafka internal] load build context
+#6 transferring context: 2.01MB done
+#6 DONE 0.0s
+
+#7 [kafka 3/6] COPY ./debezium-connector-sqlserver /opt/bitnami/kafka/plugins/debezium-connector-sqlserver
+#7 DONE 0.1s
+
+#8 [kafka 4/6] COPY ./debezium-connector-sqlserver/*sqlserver* /opt/bitnami/kafka/libs
+#8 DONE 0.0s
+
+#9 [kafka 5/6] COPY ./connect-standalone.properties /opt/bitnami/kafka/config
+#9 DONE 0.1s
+
+#10 [kafka 6/6] RUN echo "plugin.path=/opt/bitnami/kafka/plugins" >> "/opt/bitnami/kafka/config/kraft/server.properties"
+#10 DONE 0.3s
+
+#11 [kafka] exporting to image
+#11 exporting layers 0.1s done
+#11 writing image sha256:66fc97a7f1304f517eb8391c2cb77bfc587e711b1233058f2bd5210cfd15e3fb done
+#11 naming to docker.io/library/kafkaconnect-kafka done
+#11 DONE 0.1s
+
+#12 [kafka-connect internal] load build definition from Dockerfile
+#12 transferring dockerfile: 32B done
+#12 DONE 0.0s
+
+#13 [kafka-connect internal] load .dockerignore
+#13 transferring context: 2B done
+#13 DONE 0.0s
+
+#3 [kafka-connect internal] load metadata for docker.io/bitnami/kafka:latest
+#3 DONE 0.0s
+
+#4 [kafka-connect 1/6] FROM docker.io/bitnami/kafka:latest
+#4 DONE 0.0s
+
+#14 [kafka-connect internal] load build context
+#14 transferring context: 1.16kB done
+#14 DONE 0.0s
+
+#15 [kafka-connect 5/6] COPY ./connect-standalone.properties /opt/bitnami/kafka/config
+#15 CACHED
+
+#16 [kafka-connect 3/6] COPY ./debezium-connector-sqlserver /opt/bitnami/kafka/plugins/debezium-connector-sqlserver
+#16 CACHED
+
+#5 [kafka-connect 2/6] RUN mkdir -p /opt/bitnami/kafka/plugins     && apt-get update -y      && apt-get install -y curl
+#5 CACHED
+
+#17 [kafka-connect 4/6] COPY ./debezium-connector-sqlserver/*sqlserver* /opt/bitnami/kafka/libs
+#17 CACHED
+
+#18 [kafka-connect 6/6] RUN echo "plugin.path=/opt/bitnami/kafka/plugins" >> "/opt/bitnami/kafka/config/kraft/server.properties"
+#18 CACHED
+
+#11 [kafka-connect] exporting to image
+#11 exporting layers done
+#11 writing image sha256:d8ad01d6b9c78c94232c62c5a3880c7e04bc4f29f9b47bf9931bfa2ffdaf6d29 done
+#11 naming to docker.io/library/kafkaconnect-kafka-connect done
+#11 DONE 0.1s
+Attaching to kafka-1, kafka-connect-1, kafka_connect_config-1
+kafka-connect-1         | 
+kafka_connect_config-1  | Waiting for Kafka to be ready
+kafka-connect-1         | [2024-04-14 23:08:56,748] INFO Kafka Connect worker initializing ... (org.apache.kafka.connect.cli.AbstractConnectCli:114)
+kafka-connect-1         | [2024-04-14 23:08:56,751] INFO WorkerInfo values: 
+kafka-connect-1         | 	jvm.args = -Xmx1024m, -Xms1024m, -XX:+UseG1GC, -XX:MaxGCPauseMillis=20, -XX:InitiatingHeapOccupancyPercent=35, -XX:+ExplicitGCInvokesConcurrent, -XX:MaxInlineLevel=15, -Djava.awt.headless=true, -Dcom.sun.management.jmxremote, -Dcom.sun.management.jmxremote.authenticate=false, -Dcom.sun.management.jmxremote.ssl=false, -Dkafka.logs.dir=/opt/bitnami/kafka/bin/../logs, -Dlog4j.configuration=file:/opt/bitnami/kafka/bin/../config/connect-log4j.properties
+kafka-connect-1         | 	jvm.spec = BellSoft, OpenJDK 64-Bit Server VM, 17.0.9, 17.0.9+11-LTS
+kafka-connect-1         | 	jvm.classpath = /opt/bitnami/kafka/bin/../libs/activation-1.1.1.jar:/opt/bitnami/kafka/bin/../libs/aopalliance-repackaged-2.6.1.jar:/opt/bitnami/kafka/bin/../libs/argparse4j-0.7.0.jar:/opt/bitnami/kafka/bin/../libs/audience-annotations-0.12.0.jar:/opt/bitnami/kafka/bin/../libs/caffeine-2.9.3.jar:/opt/bitnami/kafka/bin/../libs/checker-qual-3.19.0.jar:/opt/bitnami/kafka/bin/../libs/commons-beanutils-1.9.4.jar:/opt/bitnami/kafka/bin/../libs/commons-cli-1.4.jar:/opt/bitnami/kafka/bin/../libs/commons-collections-3.2.2.jar:/opt/bitnami/kafka/bin/../libs/commons-digester-2.1.jar:/opt/bitnami/kafka/bin/../libs/commons-io-2.11.0.jar:/opt/bitnami/kafka/bin/../libs/commons-lang3-3.8.1.jar:/opt/bitnami/kafka/bin/../libs/commons-logging-1.2.jar:/opt/bitnami/kafka/bin/../libs/commons-validator-1.7.jar:/opt/bitnami/kafka/bin/../libs/connect-api-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/connect-basic-auth-extension-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/connect-json-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/connect-mirror-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/connect-mirror-client-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/connect-runtime-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/connect-transforms-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/debezium-connector-sqlserver-2.5.0.Final.jar:/opt/bitnami/kafka/bin/../libs/error_prone_annotations-2.10.0.jar:/opt/bitnami/kafka/bin/../libs/hk2-api-2.6.1.jar:/opt/bitnami/kafka/bin/../libs/hk2-locator-2.6.1.jar:/opt/bitnami/kafka/bin/../libs/hk2-utils-2.6.1.jar:/opt/bitnami/kafka/bin/../libs/jackson-annotations-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jackson-core-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jackson-databind-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jackson-dataformat-csv-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jackson-datatype-jdk8-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jackson-jaxrs-base-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jackson-jaxrs-json-provider-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jackson-module-jaxb-annotations-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jackson-module-scala_2.12-2.13.5.jar:/opt/bitnami/kafka/bin/../libs/jakarta.activation-api-1.2.2.jar:/opt/bitnami/kafka/bin/../libs/jakarta.annotation-api-1.3.5.jar:/opt/bitnami/kafka/bin/../libs/jakarta.inject-2.6.1.jar:/opt/bitnami/kafka/bin/../libs/jakarta.validation-api-2.0.2.jar:/opt/bitnami/kafka/bin/../libs/jakarta.ws.rs-api-2.1.6.jar:/opt/bitnami/kafka/bin/../libs/jakarta.xml.bind-api-2.3.3.jar:/opt/bitnami/kafka/bin/../libs/javassist-3.29.2-GA.jar:/opt/bitnami/kafka/bin/../libs/javax.activation-api-1.2.0.jar:/opt/bitnami/kafka/bin/../libs/javax.annotation-api-1.3.2.jar:/opt/bitnami/kafka/bin/../libs/javax.servlet-api-3.1.0.jar:/opt/bitnami/kafka/bin/../libs/javax.ws.rs-api-2.1.1.jar:/opt/bitnami/kafka/bin/../libs/jaxb-api-2.3.1.jar:/opt/bitnami/kafka/bin/../libs/jersey-client-2.39.1.jar:/opt/bitnami/kafka/bin/../libs/jersey-common-2.39.1.jar:/opt/bitnami/kafka/bin/../libs/jersey-container-servlet-2.39.1.jar:/opt/bitnami/kafka/bin/../libs/jersey-container-servlet-core-2.39.1.jar:/opt/bitnami/kafka/bin/../libs/jersey-hk2-2.39.1.jar:/opt/bitnami/kafka/bin/../libs/jersey-server-2.39.1.jar:/opt/bitnami/kafka/bin/../libs/jetty-client-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-continuation-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-http-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-io-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-security-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-server-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-servlet-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-servlets-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-util-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jetty-util-ajax-9.4.52.v20230823.jar:/opt/bitnami/kafka/bin/../libs/jline-3.22.0.jar:/opt/bitnami/kafka/bin/../libs/jopt-simple-5.0.4.jar:/opt/bitnami/kafka/bin/../libs/jose4j-0.9.3.jar:/opt/bitnami/kafka/bin/../libs/jsr305-3.0.2.jar:/opt/bitnami/kafka/bin/../libs/kafka-clients-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-group-coordinator-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-log4j-appender-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-metadata-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-raft-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-server-common-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-shell-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-storage-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-storage-api-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-streams-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-streams-examples-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-streams-scala_2.12-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-streams-test-utils-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-tools-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka-tools-api-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/kafka_2.12-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/lz4-java-1.8.0.jar:/opt/bitnami/kafka/bin/../libs/maven-artifact-3.8.8.jar:/opt/bitnami/kafka/bin/../libs/metrics-core-2.2.0.jar:/opt/bitnami/kafka/bin/../libs/metrics-core-4.1.12.1.jar:/opt/bitnami/kafka/bin/../libs/netty-buffer-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/netty-codec-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/netty-common-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/netty-handler-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/netty-resolver-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/netty-transport-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/netty-transport-classes-epoll-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/netty-transport-native-epoll-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/netty-transport-native-unix-common-4.1.100.Final.jar:/opt/bitnami/kafka/bin/../libs/osgi-resource-locator-1.0.3.jar:/opt/bitnami/kafka/bin/../libs/paranamer-2.8.jar:/opt/bitnami/kafka/bin/../libs/pcollections-4.0.1.jar:/opt/bitnami/kafka/bin/../libs/plexus-utils-3.3.1.jar:/opt/bitnami/kafka/bin/../libs/reflections-0.10.2.jar:/opt/bitnami/kafka/bin/../libs/reload4j-1.2.25.jar:/opt/bitnami/kafka/bin/../libs/rocksdbjni-7.9.2.jar:/opt/bitnami/kafka/bin/../libs/scala-collection-compat_2.12-2.10.0.jar:/opt/bitnami/kafka/bin/../libs/scala-java8-compat_2.12-1.0.2.jar:/opt/bitnami/kafka/bin/../libs/scala-library-2.12.18.jar:/opt/bitnami/kafka/bin/../libs/scala-logging_2.12-3.9.4.jar:/opt/bitnami/kafka/bin/../libs/scala-reflect-2.12.18.jar:/opt/bitnami/kafka/bin/../libs/slf4j-api-1.7.36.jar:/opt/bitnami/kafka/bin/../libs/slf4j-reload4j-1.7.36.jar:/opt/bitnami/kafka/bin/../libs/snappy-java-1.1.10.5.jar:/opt/bitnami/kafka/bin/../libs/swagger-annotations-2.2.8.jar:/opt/bitnami/kafka/bin/../libs/trogdor-3.6.1.jar:/opt/bitnami/kafka/bin/../libs/zookeeper-3.8.3.jar:/opt/bitnami/kafka/bin/../libs/zookeeper-jute-3.8.3.jar:/opt/bitnami/kafka/bin/../libs/zstd-jni-1.5.5-1.jar
+kafka-connect-1         | 	os.spec = Linux, amd64, 6.1.0-18-amd64
+kafka-connect-1         | 	os.vcpus = 12
+kafka-connect-1         |  (org.apache.kafka.connect.runtime.WorkerInfo:71)
+kafka-connect-1         | [2024-04-14 23:08:56,752] INFO Scanning for plugin classes. This might take a moment ... (org.apache.kafka.connect.cli.AbstractConnectCli:120)
+kafka-connect-1         | [2024-04-14 23:08:56,770] INFO Loading plugin from: /opt/bitnami/kafka/plugins/debezium-connector-sqlserver (org.apache.kafka.connect.runtime.isolation.PluginScanner:75)
+kafka-connect-1         | [2024-04-14 23:08:56,893] INFO Registered loader: PluginClassLoader{pluginLocation=file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/} (org.apache.kafka.connect.runtime.isolation.PluginScanner:80)
+kafka-connect-1         | [2024-04-14 23:08:56,966] INFO Loading plugin from: classpath (org.apache.kafka.connect.runtime.isolation.PluginScanner:75)
+kafka-connect-1         | [2024-04-14 23:08:56,973] INFO Registered loader: jdk.internal.loader.ClassLoaders$AppClassLoader@7ad041f3 (org.apache.kafka.connect.runtime.isolation.PluginScanner:80)
+kafka-connect-1         | [2024-04-14 23:08:56,973] INFO Scanning plugins with ServiceLoaderScanner took 204 ms (org.apache.kafka.connect.runtime.isolation.PluginScanner:70)
+kafka-connect-1         | [2024-04-14 23:08:56,974] INFO Loading plugin from: /opt/bitnami/kafka/plugins/debezium-connector-sqlserver (org.apache.kafka.connect.runtime.isolation.PluginScanner:75)
+kafka_connect_config-1  | Get:1 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+kafka_connect_config-1  | Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+kafka-connect-1         | [2024-04-14 23:08:57,160] INFO Using up-to-date JsonConverter implementation (io.debezium.converters.CloudEventsConverter:118)
+kafka-connect-1         | [2024-04-14 23:08:57,181] INFO Registered loader: PluginClassLoader{pluginLocation=file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/} (org.apache.kafka.connect.runtime.isolation.PluginScanner:80)
+kafka-connect-1         | [2024-04-14 23:08:57,189] INFO Loading plugin from: classpath (org.apache.kafka.connect.runtime.isolation.PluginScanner:75)
+kafka_connect_config-1  | Get:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]
+kafka-connect-1         | [2024-04-14 23:08:57,842] INFO Registered loader: jdk.internal.loader.ClassLoaders$AppClassLoader@7ad041f3 (org.apache.kafka.connect.runtime.isolation.PluginScanner:80)
+kafka-connect-1         | [2024-04-14 23:08:57,842] INFO Scanning plugins with ReflectionScanner took 868 ms (org.apache.kafka.connect.runtime.isolation.PluginScanner:70)
+kafka-connect-1         | [2024-04-14 23:08:57,845] WARN One or more plugins are missing ServiceLoader manifests may not be usable with plugin.discovery=service_load: [
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.connector.sqlserver.SqlServerConnector	source	2.5.0.Final
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.converters.BinaryDataConverter	converter	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.converters.BinaryDataConverter	header_converter	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.converters.ByteArrayConverter	converter	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.converters.ByteArrayConverter	header_converter	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.converters.CloudEventsConverter	converter	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.ByLogicalTableRouter	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.ExtractChangedRecordState	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.ExtractNewRecordState	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.ExtractSchemaToNewRecord	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.HeaderToValue	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.SchemaChangeEventFilter	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.TimezoneConverter	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.outbox.EventRouter	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.partitions.PartitionRouting	transformation	undefined
+kafka-connect-1         | file:/opt/bitnami/kafka/plugins/debezium-connector-sqlserver/	io.debezium.transforms.tracing.ActivateTracingSpan	transformation	undefined
+kafka-connect-1         | ]
+kafka-connect-1         | Read the documentation at https://kafka.apache.org/documentation.html#connect_plugindiscovery for instructions on migrating your plugins to take advantage of the performance improvements of service_load mode. To silence this warning, set plugin.discovery=only_scan in the worker config. (org.apache.kafka.connect.runtime.isolation.Plugins:121)
+kafka-connect-1         | [2024-04-14 23:08:57,846] INFO Added plugin 'org.apache.kafka.connect.transforms.ReplaceField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,846] INFO Added plugin 'org.apache.kafka.connect.transforms.Filter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,846] INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'org.apache.kafka.connect.transforms.InsertField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'org.apache.kafka.connect.connector.policy.AllConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'io.debezium.connector.sqlserver.SqlServerConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'org.apache.kafka.connect.connector.policy.PrincipalConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'org.apache.kafka.connect.transforms.DropHeaders' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'org.apache.kafka.connect.transforms.Cast$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'org.apache.kafka.connect.storage.SimpleHeaderConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'org.apache.kafka.connect.transforms.InsertHeader' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,847] INFO Added plugin 'io.debezium.converters.BinaryDataConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'org.apache.kafka.common.config.provider.DirectoryConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'org.apache.kafka.connect.transforms.Flatten$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorCheckpointConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'org.apache.kafka.connect.transforms.HeaderFrom$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'org.apache.kafka.connect.transforms.SetSchemaMetadata$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'io.debezium.transforms.ExtractNewRecordState' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'io.debezium.converters.ByteArrayConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'io.debezium.transforms.partitions.PartitionRouting' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'org.apache.kafka.connect.transforms.predicates.TopicNameMatches' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,848] INFO Added plugin 'org.apache.kafka.connect.transforms.ReplaceField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'io.debezium.transforms.outbox.EventRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'org.apache.kafka.connect.transforms.SetSchemaMetadata$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'org.apache.kafka.connect.transforms.predicates.RecordIsTombstone' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'org.apache.kafka.connect.connector.policy.NoneConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'org.apache.kafka.connect.converters.ByteArrayConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'org.apache.kafka.connect.transforms.Cast$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'org.apache.kafka.connect.transforms.Flatten$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,849] INFO Added plugin 'org.apache.kafka.connect.rest.basic.auth.extension.BasicAuthSecurityRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'org.apache.kafka.connect.transforms.ExtractField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampConverter$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampConverter$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'io.debezium.transforms.HeaderToValue' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'io.debezium.transforms.SchemaChangeEventFilter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'org.apache.kafka.connect.transforms.TimestampRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'io.debezium.transforms.ExtractSchemaToNewRecord' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'io.debezium.transforms.ByLogicalTableRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'org.apache.kafka.connect.transforms.RegexRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,850] INFO Added plugin 'org.apache.kafka.connect.transforms.HoistField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'org.apache.kafka.connect.transforms.ValueToKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'org.apache.kafka.common.config.provider.FileConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'io.debezium.transforms.TimezoneConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'org.apache.kafka.connect.transforms.HeaderFrom$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'org.apache.kafka.connect.transforms.predicates.HasHeaderKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'org.apache.kafka.connect.transforms.MaskField$Value' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'org.apache.kafka.common.config.provider.EnvVarConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,851] INFO Added plugin 'io.debezium.transforms.ExtractChangedRecordState' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'io.debezium.transforms.tracing.ActivateTracingSpan' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'org.apache.kafka.connect.transforms.MaskField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'org.apache.kafka.connect.transforms.ExtractField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'org.apache.kafka.connect.transforms.InsertField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'io.debezium.connector.sqlserver.rest.DebeziumSqlServerConnectRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'org.apache.kafka.connect.mirror.MirrorHeartbeatConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'io.debezium.converters.CloudEventsConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'org.apache.kafka.connect.transforms.HoistField$Key' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,852] INFO Added plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:105)
+kafka-connect-1         | [2024-04-14 23:08:57,854] INFO Added alias 'RecordIsTombstone' to plugin 'org.apache.kafka.connect.transforms.predicates.RecordIsTombstone' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,854] INFO Added alias 'CloudEventsConverter' to plugin 'io.debezium.converters.CloudEventsConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,854] INFO Added alias 'String' to plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,854] INFO Added alias 'EnvVar' to plugin 'org.apache.kafka.common.config.provider.EnvVarConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,854] INFO Added alias 'EnvVarConfigProvider' to plugin 'org.apache.kafka.common.config.provider.EnvVarConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,854] INFO Added alias 'MirrorCheckpointConnector' to plugin 'org.apache.kafka.connect.mirror.MirrorCheckpointConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,854] INFO Added alias 'HeaderToValue' to plugin 'io.debezium.transforms.HeaderToValue' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,854] INFO Added alias 'DebeziumSqlServer' to plugin 'io.debezium.connector.sqlserver.rest.DebeziumSqlServerConnectRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'PartitionRouting' to plugin 'io.debezium.transforms.partitions.PartitionRouting' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'Json' to plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'StringConverter' to plugin 'org.apache.kafka.connect.storage.StringConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'IntegerConverter' to plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'Float' to plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'LongConverter' to plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'DropHeaders' to plugin 'org.apache.kafka.connect.transforms.DropHeaders' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'SimpleHeaderConverter' to plugin 'org.apache.kafka.connect.storage.SimpleHeaderConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'SqlServerConnector' to plugin 'io.debezium.connector.sqlserver.SqlServerConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'ExtractSchemaToNewRecord' to plugin 'io.debezium.transforms.ExtractSchemaToNewRecord' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'BinaryData' to plugin 'io.debezium.converters.BinaryDataConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'DirectoryConfigProvider' to plugin 'org.apache.kafka.common.config.provider.DirectoryConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,855] INFO Added alias 'ShortConverter' to plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'CloudEvents' to plugin 'io.debezium.converters.CloudEventsConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'TimezoneConverter' to plugin 'io.debezium.transforms.TimezoneConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'BasicAuthSecurityRestExtension' to plugin 'org.apache.kafka.connect.rest.basic.auth.extension.BasicAuthSecurityRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'Simple' to plugin 'org.apache.kafka.connect.storage.SimpleHeaderConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'AllConnectorClientConfigOverridePolicy' to plugin 'org.apache.kafka.connect.connector.policy.AllConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'ExtractNewRecordState' to plugin 'io.debezium.transforms.ExtractNewRecordState' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'MirrorSource' to plugin 'org.apache.kafka.connect.mirror.MirrorSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'Directory' to plugin 'org.apache.kafka.common.config.provider.DirectoryConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'MirrorHeartbeat' to plugin 'org.apache.kafka.connect.mirror.MirrorHeartbeatConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'HasHeaderKey' to plugin 'org.apache.kafka.connect.transforms.predicates.HasHeaderKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'MirrorCheckpoint' to plugin 'org.apache.kafka.connect.mirror.MirrorCheckpointConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'ExtractChangedRecordState' to plugin 'io.debezium.transforms.ExtractChangedRecordState' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'None' to plugin 'org.apache.kafka.connect.connector.policy.NoneConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,856] INFO Added alias 'TimestampRouter' to plugin 'org.apache.kafka.connect.transforms.TimestampRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'Principal' to plugin 'org.apache.kafka.connect.connector.policy.PrincipalConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'All' to plugin 'org.apache.kafka.connect.connector.policy.AllConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'JsonConverter' to plugin 'org.apache.kafka.connect.json.JsonConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'SqlServer' to plugin 'io.debezium.connector.sqlserver.SqlServerConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'RegexRouter' to plugin 'org.apache.kafka.connect.transforms.RegexRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'NoneConnectorClientConfigOverridePolicy' to plugin 'org.apache.kafka.connect.connector.policy.NoneConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'Short' to plugin 'org.apache.kafka.connect.converters.ShortConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'ByLogicalTableRouter' to plugin 'io.debezium.transforms.ByLogicalTableRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'Double' to plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'FileConfigProvider' to plugin 'org.apache.kafka.common.config.provider.FileConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'EventRouter' to plugin 'io.debezium.transforms.outbox.EventRouter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,857] INFO Added alias 'SchemaChangeEventFilter' to plugin 'io.debezium.transforms.SchemaChangeEventFilter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'Long' to plugin 'org.apache.kafka.connect.converters.LongConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'File' to plugin 'org.apache.kafka.common.config.provider.FileConfigProvider' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'FloatConverter' to plugin 'org.apache.kafka.connect.converters.FloatConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'ActivateTracingSpan' to plugin 'io.debezium.transforms.tracing.ActivateTracingSpan' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'DoubleConverter' to plugin 'org.apache.kafka.connect.converters.DoubleConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'DebeziumSqlServerConnectRestExtension' to plugin 'io.debezium.connector.sqlserver.rest.DebeziumSqlServerConnectRestExtension' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'BinaryDataConverter' to plugin 'io.debezium.converters.BinaryDataConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'TopicNameMatches' to plugin 'org.apache.kafka.connect.transforms.predicates.TopicNameMatches' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'MirrorHeartbeatConnector' to plugin 'org.apache.kafka.connect.mirror.MirrorHeartbeatConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'InsertHeader' to plugin 'org.apache.kafka.connect.transforms.InsertHeader' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'MirrorSourceConnector' to plugin 'org.apache.kafka.connect.mirror.MirrorSourceConnector' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'PrincipalConnectorClientConfigOverridePolicy' to plugin 'org.apache.kafka.connect.connector.policy.PrincipalConnectorClientConfigOverridePolicy' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,858] INFO Added alias 'ValueToKey' to plugin 'org.apache.kafka.connect.transforms.ValueToKey' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,859] INFO Added alias 'Integer' to plugin 'org.apache.kafka.connect.converters.IntegerConverter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,859] INFO Added alias 'Filter' to plugin 'org.apache.kafka.connect.transforms.Filter' (org.apache.kafka.connect.runtime.isolation.DelegatingClassLoader:109)
+kafka-connect-1         | [2024-04-14 23:08:57,864] INFO StandaloneConfig values: 
+kafka-connect-1         | 	access.control.allow.methods = 
+kafka-connect-1         | 	access.control.allow.origin = 
+kafka-connect-1         | 	admin.listeners = null
+kafka-connect-1         | 	auto.include.jmx.reporter = true
+kafka-connect-1         | 	bootstrap.servers = [kafka:9092]
+kafka-connect-1         | 	client.dns.lookup = use_all_dns_ips
+kafka-connect-1         | 	config.providers = []
+kafka-connect-1         | 	connector.client.config.override.policy = All
+kafka-connect-1         | 	header.converter = class org.apache.kafka.connect.storage.SimpleHeaderConverter
+kafka-connect-1         | 	key.converter = class org.apache.kafka.connect.json.JsonConverter
+kafka-connect-1         | 	listeners = [http://:8083]
+kafka-connect-1         | 	metric.reporters = []
+kafka-connect-1         | 	metrics.num.samples = 2
+kafka-connect-1         | 	metrics.recording.level = INFO
+kafka-connect-1         | 	metrics.sample.window.ms = 30000
+kafka-connect-1         | 	offset.flush.interval.ms = 10000
+kafka-connect-1         | 	offset.flush.timeout.ms = 5000
+kafka-connect-1         | 	offset.storage.file.filename = /tmp/connect.offsets
+kafka-connect-1         | 	plugin.discovery = hybrid_warn
+kafka-connect-1         | 	plugin.path = [/opt/bitnami/kafka/plugins]
+kafka-connect-1         | 	response.http.headers.config = 
+kafka-connect-1         | 	rest.advertised.host.name = null
+kafka-connect-1         | 	rest.advertised.listener = null
+kafka-connect-1         | 	rest.advertised.port = null
+kafka-connect-1         | 	rest.extension.classes = []
+kafka-connect-1         | 	ssl.cipher.suites = null
+kafka-connect-1         | 	ssl.client.auth = none
+kafka-connect-1         | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+kafka-connect-1         | 	ssl.endpoint.identification.algorithm = https
+kafka-connect-1         | 	ssl.engine.factory.class = null
+kafka-connect-1         | 	ssl.key.password = null
+kafka-connect-1         | 	ssl.keymanager.algorithm = SunX509
+kafka-connect-1         | 	ssl.keystore.certificate.chain = null
+kafka-connect-1         | 	ssl.keystore.key = null
+kafka-connect-1         | 	ssl.keystore.location = null
+kafka-connect-1         | 	ssl.keystore.password = null
+kafka-connect-1         | 	ssl.keystore.type = JKS
+kafka-connect-1         | 	ssl.protocol = TLSv1.3
+kafka-connect-1         | 	ssl.provider = null
+kafka-connect-1         | 	ssl.secure.random.implementation = null
+kafka-connect-1         | 	ssl.trustmanager.algorithm = PKIX
+kafka-connect-1         | 	ssl.truststore.certificates = null
+kafka-connect-1         | 	ssl.truststore.location = null
+kafka-connect-1         | 	ssl.truststore.password = null
+kafka-connect-1         | 	ssl.truststore.type = JKS
+kafka-connect-1         | 	task.shutdown.graceful.timeout.ms = 5000
+kafka-connect-1         | 	topic.creation.enable = true
+kafka-connect-1         | 	topic.tracking.allow.reset = true
+kafka-connect-1         | 	topic.tracking.enable = true
+kafka-connect-1         | 	value.converter = class org.apache.kafka.connect.json.JsonConverter
+kafka-connect-1         |  (org.apache.kafka.connect.runtime.standalone.StandaloneConfig:370)
+kafka-connect-1         | [2024-04-14 23:08:57,864] INFO Creating Kafka admin client (org.apache.kafka.connect.runtime.WorkerConfig:283)
+kafka-connect-1         | [2024-04-14 23:08:57,866] INFO AdminClientConfig values: 
+kafka-connect-1         | 	auto.include.jmx.reporter = true
+kafka-connect-1         | 	bootstrap.servers = [kafka:9092]
+kafka-connect-1         | 	client.dns.lookup = use_all_dns_ips
+kafka-connect-1         | 	client.id = 
+kafka-connect-1         | 	connections.max.idle.ms = 300000
+kafka-connect-1         | 	default.api.timeout.ms = 60000
+kafka-connect-1         | 	metadata.max.age.ms = 300000
+kafka-connect-1         | 	metric.reporters = []
+kafka-connect-1         | 	metrics.num.samples = 2
+kafka-connect-1         | 	metrics.recording.level = INFO
+kafka-connect-1         | 	metrics.sample.window.ms = 30000
+kafka-connect-1         | 	receive.buffer.bytes = 65536
+kafka-connect-1         | 	reconnect.backoff.max.ms = 1000
+kafka-connect-1         | 	reconnect.backoff.ms = 50
+kafka-connect-1         | 	request.timeout.ms = 30000
+kafka-connect-1         | 	retries = 2147483647
+kafka-connect-1         | 	retry.backoff.ms = 100
+kafka-connect-1         | 	sasl.client.callback.handler.class = null
+kafka-connect-1         | 	sasl.jaas.config = null
+kafka-connect-1         | 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+kafka-connect-1         | 	sasl.kerberos.min.time.before.relogin = 60000
+kafka-connect-1         | 	sasl.kerberos.service.name = null
+kafka-connect-1         | 	sasl.kerberos.ticket.renew.jitter = 0.05
+kafka-connect-1         | 	sasl.kerberos.ticket.renew.window.factor = 0.8
+kafka-connect-1         | 	sasl.login.callback.handler.class = null
+kafka-connect-1         | 	sasl.login.class = null
+kafka-connect-1         | 	sasl.login.connect.timeout.ms = null
+kafka-connect-1         | 	sasl.login.read.timeout.ms = null
+kafka-connect-1         | 	sasl.login.refresh.buffer.seconds = 300
+kafka-connect-1         | 	sasl.login.refresh.min.period.seconds = 60
+kafka-connect-1         | 	sasl.login.refresh.window.factor = 0.8
+kafka-connect-1         | 	sasl.login.refresh.window.jitter = 0.05
+kafka-connect-1         | 	sasl.login.retry.backoff.max.ms = 10000
+kafka-connect-1         | 	sasl.login.retry.backoff.ms = 100
+kafka-connect-1         | 	sasl.mechanism = GSSAPI
+kafka-connect-1         | 	sasl.oauthbearer.clock.skew.seconds = 30
+kafka-connect-1         | 	sasl.oauthbearer.expected.audience = null
+kafka-connect-1         | 	sasl.oauthbearer.expected.issuer = null
+kafka-connect-1         | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+kafka-connect-1         | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+kafka-connect-1         | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+kafka-connect-1         | 	sasl.oauthbearer.jwks.endpoint.url = null
+kafka-connect-1         | 	sasl.oauthbearer.scope.claim.name = scope
+kafka-connect-1         | 	sasl.oauthbearer.sub.claim.name = sub
+kafka-connect-1         | 	sasl.oauthbearer.token.endpoint.url = null
+kafka-connect-1         | 	security.protocol = PLAINTEXT
+kafka-connect-1         | 	security.providers = null
+kafka-connect-1         | 	send.buffer.bytes = 131072
+kafka-connect-1         | 	socket.connection.setup.timeout.max.ms = 30000
+kafka-connect-1         | 	socket.connection.setup.timeout.ms = 10000
+kafka-connect-1         | 	ssl.cipher.suites = null
+kafka-connect-1         | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+kafka-connect-1         | 	ssl.endpoint.identification.algorithm = https
+kafka-connect-1         | 	ssl.engine.factory.class = null
+kafka-connect-1         | 	ssl.key.password = null
+kafka-connect-1         | 	ssl.keymanager.algorithm = SunX509
+kafka-connect-1         | 	ssl.keystore.certificate.chain = null
+kafka-connect-1         | 	ssl.keystore.key = null
+kafka-connect-1         | 	ssl.keystore.location = null
+kafka-connect-1         | 	ssl.keystore.password = null
+kafka-connect-1         | 	ssl.keystore.type = JKS
+kafka-connect-1         | 	ssl.protocol = TLSv1.3
+kafka-connect-1         | 	ssl.provider = null
+kafka-connect-1         | 	ssl.secure.random.implementation = null
+kafka-connect-1         | 	ssl.trustmanager.algorithm = PKIX
+kafka-connect-1         | 	ssl.truststore.certificates = null
+kafka-connect-1         | 	ssl.truststore.location = null
+kafka-connect-1         | 	ssl.truststore.password = null
+kafka-connect-1         | 	ssl.truststore.type = JKS
+kafka-connect-1         |  (org.apache.kafka.clients.admin.AdminClientConfig:370)
+kafka_connect_config-1  | Get:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]
+kafka-connect-1         | [2024-04-14 23:08:57,905] INFO These configurations '[offset.flush.interval.ms, key.converter.schemas.enable, offset.storage.file.filename, value.converter.schemas.enable, plugin.path, value.converter, key.converter]' were supplied but are not used yet. (org.apache.kafka.clients.admin.AdminClientConfig:379)
+kafka-connect-1         | [2024-04-14 23:08:57,906] INFO Kafka version: 3.6.1 (org.apache.kafka.common.utils.AppInfoParser:119)
+kafka-connect-1         | [2024-04-14 23:08:57,906] INFO Kafka commitId: 5e3c2b738d253ff5 (org.apache.kafka.common.utils.AppInfoParser:120)
+kafka-connect-1         | [2024-04-14 23:08:57,906] INFO Kafka startTimeMs: 1713136137905 (org.apache.kafka.common.utils.AppInfoParser:121)
+kafka-connect-1         | [2024-04-14 23:08:57,914] INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient:977)
+kafka-connect-1         | [2024-04-14 23:08:57,915] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.19.0.2:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient:814)
+kafka-connect-1         | [2024-04-14 23:08:58,017] INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient:977)
+kafka-connect-1         | [2024-04-14 23:08:58,018] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.19.0.2:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient:814)
+kafka_connect_config-1  | Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+kafka_connect_config-1  | Get:6 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1691 kB]
+kafka-connect-1         | [2024-04-14 23:08:58,118] INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient:977)
+kafka-connect-1         | [2024-04-14 23:08:58,119] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.19.0.2:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient:814)
+kafka-connect-1         | [2024-04-14 23:08:58,420] INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient:977)
+kafka-connect-1         | [2024-04-14 23:08:58,420] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.19.0.2:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient:814)
+kafka_connect_config-1  | Get:7 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+kafka_connect_config-1  | Get:8 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+kafka-connect-1         | [2024-04-14 23:08:58,922] INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient:977)
+kafka-connect-1         | [2024-04-14 23:08:58,922] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.19.0.2:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient:814)
+kafka-1                 | Formatting /bitnami/kafka/data with metadata.version 3.6-IV2.
+kafka_connect_config-1  | Get:9 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [2135 kB]
+kafka-1                 | 
+kafka_connect_config-1  | Get:10 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+kafka_connect_config-1  | Get:11 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [44.7 kB]
+kafka_connect_config-1  | Get:12 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1082 kB]
+kafka_connect_config-1  | Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [61.3 kB]
+kafka_connect_config-1  | Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1375 kB]
+kafka_connect_config-1  | Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1974 kB]
+kafka_connect_config-1  | Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [2176 kB]
+kafka_connect_config-1  | Get:17 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [33.3 kB]
+kafka_connect_config-1  | Get:18 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [80.9 kB]
+kafka-1                 | [2024-04-14 23:08:59,698] INFO Registered kafka:type=kafka.Log4jController MBean (kafka.utils.Log4jControllerRegistration$)
+kafka-connect-1         | [2024-04-14 23:08:59,825] INFO [AdminClient clientId=adminclient-1] Node -1 disconnected. (org.apache.kafka.clients.NetworkClient:977)
+kafka-connect-1         | [2024-04-14 23:08:59,825] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.19.0.2:9092) could not be established. Broker may not be available. (org.apache.kafka.clients.NetworkClient:814)
+kafka-1                 | [2024-04-14 23:08:59,884] INFO Setting -D jdk.tls.rejectClientInitiatedRenegotiation=true to disable client-initiated TLS renegotiation (org.apache.zookeeper.common.X509Util)
+kafka-1                 | [2024-04-14 23:08:59,971] INFO Registered signal handlers for TERM, INT, HUP (org.apache.kafka.common.utils.LoggingSignalHandler)
+kafka-1                 | [2024-04-14 23:08:59,973] INFO [ControllerServer id=0] Starting controller (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:08:59,985] INFO authorizerStart completed for endpoint CONTROLLER. Endpoint is now READY. (org.apache.kafka.server.network.EndpointReadyFutures)
+kafka_connect_config-1  | Fetched 31.0 MB in 3s (9026 kB/s)
+kafka-1                 | [2024-04-14 23:09:00,222] INFO Updated connection-accept-rate max connection creation rate to 2147483647 (kafka.network.ConnectionQuotas)
+kafka-1                 | [2024-04-14 23:09:00,256] INFO [SocketServer listenerType=CONTROLLER, nodeId=0] Created data-plane acceptor and processors for endpoint : ListenerName(CONTROLLER) (kafka.network.SocketServer)
+kafka-1                 | [2024-04-14 23:09:00,258] INFO [SharedServer id=0] Starting SharedServer (kafka.server.SharedServer)
+kafka-1                 | [2024-04-14 23:09:00,302] INFO [LogLoader partition=__cluster_metadata-0, dir=/bitnami/kafka/data] Loading producer state till offset 0 with message format version 2 (kafka.log.UnifiedLog$)
+kafka-1                 | [2024-04-14 23:09:00,302] INFO [LogLoader partition=__cluster_metadata-0, dir=/bitnami/kafka/data] Reloading from producer snapshot and rebuilding producer state from offset 0 (kafka.log.UnifiedLog$)
+kafka-1                 | [2024-04-14 23:09:00,302] INFO [LogLoader partition=__cluster_metadata-0, dir=/bitnami/kafka/data] Producer state recovery took 0ms for snapshot load and 0ms for segment recovery from offset 0 (kafka.log.UnifiedLog$)
+kafka-1                 | [2024-04-14 23:09:00,320] INFO Initialized snapshots with IDs Set() from /bitnami/kafka/data/__cluster_metadata-0 (kafka.raft.KafkaMetadataLog$)
+kafka-1                 | [2024-04-14 23:09:00,329] INFO [raft-expiration-reaper]: Starting (kafka.raft.TimingWheelExpirationService$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,418] INFO [RaftManager id=0] Completed transition to Unattached(epoch=0, voters=[0], electionTimeoutMs=1217) from null (org.apache.kafka.raft.QuorumState)
+kafka-1                 | [2024-04-14 23:09:00,428] INFO [RaftManager id=0] Completed transition to CandidateState(localId=0, epoch=1, retries=1, voteStates={0=GRANTED}, highWatermark=Optional.empty, electionTimeoutMs=1620) from Unattached(epoch=0, voters=[0], electionTimeoutMs=1217) (org.apache.kafka.raft.QuorumState)
+kafka-1                 | [2024-04-14 23:09:00,438] INFO [RaftManager id=0] Completed transition to Leader(localId=0, epoch=1, epochStartOffset=0, highWatermark=Optional.empty, voterStates={0=ReplicaState(nodeId=0, endOffset=Optional.empty, lastFetchTimestamp=-1, lastCaughtUpTimestamp=-1, hasAcknowledgedLeader=true)}) from CandidateState(localId=0, epoch=1, retries=1, voteStates={0=GRANTED}, highWatermark=Optional.empty, electionTimeoutMs=1620) (org.apache.kafka.raft.QuorumState)
+kafka-1                 | [2024-04-14 23:09:00,456] INFO [kafka-0-raft-outbound-request-thread]: Starting (kafka.raft.RaftSendThread)
+kafka-1                 | [2024-04-14 23:09:00,456] INFO [kafka-0-raft-io-thread]: Starting (kafka.raft.KafkaRaftManager$RaftIoThread)
+kafka-1                 | [2024-04-14 23:09:00,465] INFO [RaftManager id=0] High watermark set to LogOffsetMetadata(offset=1, metadata=Optional[(segmentBaseOffset=0,relativePositionInSegment=91)]) for the first time for epoch 1 based on indexOfHw 0 and voters [ReplicaState(nodeId=0, endOffset=Optional[LogOffsetMetadata(offset=1, metadata=Optional[(segmentBaseOffset=0,relativePositionInSegment=91)])], lastFetchTimestamp=-1, lastCaughtUpTimestamp=-1, hasAcknowledgedLeader=true)] (org.apache.kafka.raft.LeaderState)
+kafka-1                 | [2024-04-14 23:09:00,468] INFO [MetadataLoader id=0] initializeNewPublishers: The loader is still catching up because we have loaded up to offset -1, but the high water mark is 1 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,469] INFO [ControllerServer id=0] Waiting for controller quorum voters future (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:09:00,469] INFO [ControllerServer id=0] Finished waiting for controller quorum voters future (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:09:00,479] INFO [RaftManager id=0] Registered the listener org.apache.kafka.image.loader.MetadataLoader@2092803300 (org.apache.kafka.raft.KafkaRaftClient)
+kafka-1                 | [2024-04-14 23:09:00,484] INFO [MetadataLoader id=0] maybePublishMetadata(LOG_DELTA): The loader is still catching up because we have not loaded a controller record as of offset 0 and high water mark is 1 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,487] INFO [QuorumController id=0] Creating new QuorumController with clusterId mB2xGShYR6ecGED0URgstA. (org.apache.kafka.controller.QuorumController)
+kafka-1                 | [2024-04-14 23:09:00,487] INFO [RaftManager id=0] Registered the listener org.apache.kafka.controller.QuorumController$QuorumMetaLogListener@25202150 (org.apache.kafka.raft.KafkaRaftClient)
+kafka-1                 | [2024-04-14 23:09:00,489] INFO [QuorumController id=0] Becoming the active controller at epoch 1, next write offset 1. (org.apache.kafka.controller.QuorumController)
+kafka-1                 | [2024-04-14 23:09:00,491] WARN [QuorumController id=0] Performing controller activation. The metadata log appears to be empty. Appending 1 bootstrap record(s) in metadata transaction at metadata.version 3.6-IV2 from bootstrap source 'the binary bootstrap metadata file: /bitnami/kafka/data/bootstrap.checkpoint'. Setting the ZK migration state to NONE since this is a de-novo KRaft cluster. (org.apache.kafka.controller.QuorumController)
+kafka-1                 | [2024-04-14 23:09:00,491] INFO [controller-0-ThrottledChannelReaper-Fetch]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+kafka-1                 | [2024-04-14 23:09:00,492] INFO [controller-0-ThrottledChannelReaper-Produce]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+kafka-1                 | [2024-04-14 23:09:00,492] INFO [QuorumController id=0] Replayed BeginTransactionRecord(name='Bootstrap records') at offset 1. (org.apache.kafka.controller.OffsetControlManager)
+kafka-1                 | [2024-04-14 23:09:00,492] INFO [QuorumController id=0] Replayed a FeatureLevelRecord setting metadata version to 3.6-IV2 (org.apache.kafka.controller.FeatureControlManager)
+kafka-1                 | [2024-04-14 23:09:00,492] INFO [controller-0-ThrottledChannelReaper-Request]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+kafka-1                 | [2024-04-14 23:09:00,492] INFO [QuorumController id=0] Replayed EndTransactionRecord() at offset 4. (org.apache.kafka.controller.OffsetControlManager)
+kafka-1                 | [2024-04-14 23:09:00,493] INFO [controller-0-ThrottledChannelReaper-ControllerMutation]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+kafka-1                 | [2024-04-14 23:09:00,505] INFO [ExpirationReaper-0-AlterAcls]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,509] INFO [ControllerServer id=0] Waiting for the controller metadata publishers to be installed (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:09:00,509] INFO [ControllerServer id=0] Finished waiting for the controller metadata publishers to be installed (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:09:00,509] INFO [MetadataLoader id=0] initializeNewPublishers: The loader finished catching up to the current high water mark of 1 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,509] INFO [SocketServer listenerType=CONTROLLER, nodeId=0] Enabling request processing. (kafka.network.SocketServer)
+kafka-1                 | [2024-04-14 23:09:00,511] INFO Awaiting socket connections on 0.0.0.0:9093. (kafka.network.DataPlaneAcceptor)
+kafka-1                 | [2024-04-14 23:09:00,512] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing SnapshotGenerator with a snapshot at offset 0 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,512] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing FeaturesPublisher with a snapshot at offset 0 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,512] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing DynamicConfigPublisher controller id=0 with a snapshot at offset 0 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,513] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing DynamicClientQuotaPublisher controller id=0 with a snapshot at offset 0 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,513] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing ScramPublisher controller id=0 with a snapshot at offset 0 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,513] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing DelegationTokenPublisher controller id=0 with a snapshot at offset 0 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,514] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing ControllerMetadataMetricsPublisher with a snapshot at offset 0 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,514] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing AclPublisher controller id=0 with a snapshot at offset 0 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,519] INFO [ControllerServer id=0] Waiting for all of the authorizer futures to be completed (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:09:00,519] INFO [ControllerServer id=0] Finished waiting for all of the authorizer futures to be completed (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:09:00,519] INFO [ControllerServer id=0] Waiting for all of the SocketServer Acceptors to be started (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:09:00,519] INFO [ControllerServer id=0] Finished waiting for all of the SocketServer Acceptors to be started (kafka.server.ControllerServer)
+kafka-1                 | [2024-04-14 23:09:00,520] INFO [BrokerServer id=0] Transition from SHUTDOWN to STARTING (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,521] INFO [BrokerServer id=0] Starting broker (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,528] INFO [broker-0-ThrottledChannelReaper-Fetch]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+kafka-1                 | [2024-04-14 23:09:00,529] INFO [broker-0-ThrottledChannelReaper-Produce]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+kafka-1                 | [2024-04-14 23:09:00,529] INFO [broker-0-ThrottledChannelReaper-Request]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+kafka-1                 | [2024-04-14 23:09:00,529] INFO [broker-0-ThrottledChannelReaper-ControllerMutation]: Starting (kafka.server.ClientQuotaManager$ThrottledChannelReaper)
+kafka-1                 | [2024-04-14 23:09:00,540] INFO [BrokerServer id=0] Waiting for controller quorum voters future (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,540] INFO [BrokerServer id=0] Finished waiting for controller quorum voters future (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,544] INFO [broker-0-to-controller-forwarding-channel-manager]: Starting (kafka.server.BrokerToControllerRequestThread)
+kafka-1                 | [2024-04-14 23:09:00,544] INFO [broker-0-to-controller-forwarding-channel-manager]: Recorded new controller, from now on will use node kafka:9093 (id: 0 rack: null) (kafka.server.BrokerToControllerRequestThread)
+kafka-1                 | [2024-04-14 23:09:00,581] INFO Updated connection-accept-rate max connection creation rate to 2147483647 (kafka.network.ConnectionQuotas)
+kafka-1                 | [2024-04-14 23:09:00,583] INFO [SocketServer listenerType=BROKER, nodeId=0] Created data-plane acceptor and processors for endpoint : ListenerName(PLAINTEXT) (kafka.network.SocketServer)
+kafka-1                 | [2024-04-14 23:09:00,586] INFO [broker-0-to-controller-alter-partition-channel-manager]: Starting (kafka.server.BrokerToControllerRequestThread)
+kafka-1                 | [2024-04-14 23:09:00,586] INFO [broker-0-to-controller-alter-partition-channel-manager]: Recorded new controller, from now on will use node kafka:9093 (id: 0 rack: null) (kafka.server.BrokerToControllerRequestThread)
+kafka-1                 | [2024-04-14 23:09:00,597] INFO [ExpirationReaper-0-Produce]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,598] INFO [ExpirationReaper-0-Fetch]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,598] INFO [ExpirationReaper-0-DeleteRecords]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,599] INFO [ExpirationReaper-0-ElectLeader]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,599] INFO [ExpirationReaper-0-RemoteFetch]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,608] INFO [ExpirationReaper-0-Heartbeat]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,611] INFO [ExpirationReaper-0-Rebalance]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,631] INFO [broker-0-to-controller-heartbeat-channel-manager]: Starting (kafka.server.BrokerToControllerRequestThread)
+kafka-1                 | [2024-04-14 23:09:00,631] INFO [broker-0-to-controller-heartbeat-channel-manager]: Recorded new controller, from now on will use node kafka:9093 (id: 0 rack: null) (kafka.server.BrokerToControllerRequestThread)
+kafka-1                 | [2024-04-14 23:09:00,633] INFO [BrokerLifecycleManager id=0] Incarnation gJeIRBD7Sp2a4uSh-czURA of broker 0 in cluster mB2xGShYR6ecGED0URgstA is now STARTING. (kafka.server.BrokerLifecycleManager)
+kafka_connect_config-1  | Reading package lists...
+kafka-1                 | [2024-04-14 23:09:00,644] INFO [ExpirationReaper-0-AlterAcls]: Starting (kafka.server.DelayedOperationPurgatory$ExpiredOperationReaper)
+kafka-1                 | [2024-04-14 23:09:00,656] INFO [BrokerServer id=0] Waiting for the broker metadata publishers to be installed (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,656] INFO [BrokerServer id=0] Finished waiting for the broker metadata publishers to be installed (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,656] INFO [BrokerServer id=0] Waiting for the controller to acknowledge that we are caught up (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,657] INFO [MetadataLoader id=0] InitializeNewPublishers: initializing BrokerMetadataPublisher with a snapshot at offset 4 (org.apache.kafka.image.loader.MetadataLoader)
+kafka-1                 | [2024-04-14 23:09:00,657] INFO [BrokerMetadataPublisher id=0] Publishing initial metadata at offset OffsetAndEpoch(offset=4, epoch=1) with metadata.version 3.6-IV2. (kafka.server.metadata.BrokerMetadataPublisher)
+kafka-1                 | [2024-04-14 23:09:00,658] INFO Loading logs from log dirs ArrayBuffer(/bitnami/kafka/data) (kafka.log.LogManager)
+kafka-1                 | [2024-04-14 23:09:00,660] INFO No logs found to be loaded in /bitnami/kafka/data (kafka.log.LogManager)
+kafka-1                 | [2024-04-14 23:09:00,666] INFO Loaded 0 logs in 8ms (kafka.log.LogManager)
+kafka-1                 | [2024-04-14 23:09:00,666] INFO Starting log cleanup with a period of 300000 ms. (kafka.log.LogManager)
+kafka-1                 | [2024-04-14 23:09:00,667] INFO Starting log flusher with a default period of 9223372036854775807 ms. (kafka.log.LogManager)
+kafka-1                 | [2024-04-14 23:09:00,673] INFO [QuorumController id=0] Replayed initial RegisterBrokerRecord for broker 0: RegisterBrokerRecord(brokerId=0, isMigratingZkBroker=false, incarnationId=gJeIRBD7Sp2a4uSh-czURA, brokerEpoch=5, endPoints=[BrokerEndpoint(name='PLAINTEXT', host='25bbbcedf6fd', port=9092, securityProtocol=0)], features=[BrokerFeature(name='metadata.version', minSupportedVersion=1, maxSupportedVersion=14)], rack=null, fenced=true, inControlledShutdown=false) (org.apache.kafka.controller.ClusterControlManager)
+kafka-1                 | [2024-04-14 23:09:00,674] INFO Starting the log cleaner (kafka.log.LogCleaner)
+kafka-1                 | [2024-04-14 23:09:00,692] INFO [kafka-log-cleaner-thread-0]: Starting (kafka.log.LogCleaner$CleanerThread)
+kafka-1                 | [2024-04-14 23:09:00,693] INFO [LogDirFailureHandler]: Starting (kafka.server.ReplicaManager$LogDirFailureHandler)
+kafka-1                 | [2024-04-14 23:09:00,693] INFO [AddPartitionsToTxnSenderThread-0]: Starting (kafka.server.AddPartitionsToTxnManager)
+kafka-1                 | [2024-04-14 23:09:00,693] INFO [GroupCoordinator 0]: Starting up. (kafka.coordinator.group.GroupCoordinator)
+kafka-1                 | [2024-04-14 23:09:00,695] INFO [GroupCoordinator 0]: Startup complete. (kafka.coordinator.group.GroupCoordinator)
+kafka-1                 | [2024-04-14 23:09:00,695] INFO [TransactionCoordinator id=0] Starting up. (kafka.coordinator.transaction.TransactionCoordinator)
+kafka-1                 | [2024-04-14 23:09:00,696] INFO [TxnMarkerSenderThread-0]: Starting (kafka.coordinator.transaction.TransactionMarkerChannelManager)
+kafka-1                 | [2024-04-14 23:09:00,696] INFO [TransactionCoordinator id=0] Startup complete. (kafka.coordinator.transaction.TransactionCoordinator)
+kafka-1                 | [2024-04-14 23:09:00,696] INFO [BrokerMetadataPublisher id=0] Updating metadata.version to 14 at offset OffsetAndEpoch(offset=4, epoch=1). (kafka.server.metadata.BrokerMetadataPublisher)
+kafka-1                 | [2024-04-14 23:09:00,701] INFO [BrokerLifecycleManager id=0] Successfully registered broker 0 with broker epoch 5 (kafka.server.BrokerLifecycleManager)
+kafka-1                 | [2024-04-14 23:09:00,706] INFO [BrokerLifecycleManager id=0] The broker has caught up. Transitioning from STARTING to RECOVERY. (kafka.server.BrokerLifecycleManager)
+kafka-1                 | [2024-04-14 23:09:00,706] INFO [BrokerServer id=0] Finished waiting for the controller to acknowledge that we are caught up (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,706] INFO [BrokerServer id=0] Waiting for the initial broker metadata update to be published (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,706] INFO [BrokerServer id=0] Finished waiting for the initial broker metadata update to be published (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,707] INFO KafkaConfig values: 
+kafka-1                 | 	advertised.listeners = null
+kafka-1                 | 	alter.config.policy.class.name = null
+kafka-1                 | 	alter.log.dirs.replication.quota.window.num = 11
+kafka-1                 | 	alter.log.dirs.replication.quota.window.size.seconds = 1
+kafka-1                 | 	authorizer.class.name = 
+kafka-1                 | 	auto.create.topics.enable = true
+kafka-1                 | 	auto.include.jmx.reporter = true
+kafka-1                 | 	auto.leader.rebalance.enable = true
+kafka-1                 | 	background.threads = 10
+kafka-1                 | 	broker.heartbeat.interval.ms = 2000
+kafka-1                 | 	broker.id = 0
+kafka-1                 | 	broker.id.generation.enable = true
+kafka-1                 | 	broker.rack = null
+kafka-1                 | 	broker.session.timeout.ms = 9000
+kafka-1                 | 	client.quota.callback.class = null
+kafka-1                 | 	compression.type = producer
+kafka-1                 | 	connection.failed.authentication.delay.ms = 100
+kafka-1                 | 	connections.max.idle.ms = 600000
+kafka-1                 | 	connections.max.reauth.ms = 0
+kafka-1                 | 	control.plane.listener.name = null
+kafka-1                 | 	controlled.shutdown.enable = true
+kafka-1                 | 	controlled.shutdown.max.retries = 3
+kafka-1                 | 	controlled.shutdown.retry.backoff.ms = 5000
+kafka-1                 | 	controller.listener.names = CONTROLLER
+kafka-1                 | 	controller.quorum.append.linger.ms = 25
+kafka-1                 | 	controller.quorum.election.backoff.max.ms = 1000
+kafka-1                 | 	controller.quorum.election.timeout.ms = 1000
+kafka-1                 | 	controller.quorum.fetch.timeout.ms = 2000
+kafka-1                 | 	controller.quorum.request.timeout.ms = 2000
+kafka-1                 | 	controller.quorum.retry.backoff.ms = 20
+kafka-1                 | 	controller.quorum.voters = [0@kafka:9093]
+kafka-1                 | 	controller.quota.window.num = 11
+kafka-1                 | 	controller.quota.window.size.seconds = 1
+kafka-1                 | 	controller.socket.timeout.ms = 30000
+kafka-1                 | 	create.topic.policy.class.name = null
+kafka-1                 | 	default.replication.factor = 1
+kafka-1                 | 	delegation.token.expiry.check.interval.ms = 3600000
+kafka-1                 | 	delegation.token.expiry.time.ms = 86400000
+kafka-1                 | 	delegation.token.master.key = null
+kafka-1                 | 	delegation.token.max.lifetime.ms = 604800000
+kafka-1                 | 	delegation.token.secret.key = null
+kafka-1                 | 	delete.records.purgatory.purge.interval.requests = 1
+kafka-1                 | 	delete.topic.enable = true
+kafka-1                 | 	early.start.listeners = null
+kafka-1                 | 	fetch.max.bytes = 57671680
+kafka-1                 | 	fetch.purgatory.purge.interval.requests = 1000
+kafka-1                 | 	group.consumer.assignors = [org.apache.kafka.coordinator.group.assignor.RangeAssignor]
+kafka-1                 | 	group.consumer.heartbeat.interval.ms = 5000
+kafka-1                 | 	group.consumer.max.heartbeat.interval.ms = 15000
+kafka-1                 | 	group.consumer.max.session.timeout.ms = 60000
+kafka-1                 | 	group.consumer.max.size = 2147483647
+kafka-1                 | 	group.consumer.min.heartbeat.interval.ms = 5000
+kafka-1                 | 	group.consumer.min.session.timeout.ms = 45000
+kafka-1                 | 	group.consumer.session.timeout.ms = 45000
+kafka-1                 | 	group.coordinator.new.enable = false
+kafka-1                 | 	group.coordinator.threads = 1
+kafka-1                 | 	group.initial.rebalance.delay.ms = 3000
+kafka-1                 | 	group.max.session.timeout.ms = 1800000
+kafka-1                 | 	group.max.size = 2147483647
+kafka-1                 | 	group.min.session.timeout.ms = 6000
+kafka-1                 | 	initial.broker.registration.timeout.ms = 60000
+kafka-1                 | 	inter.broker.listener.name = null
+kafka-1                 | 	inter.broker.protocol.version = 3.6-IV2
+kafka-1                 | 	kafka.metrics.polling.interval.secs = 10
+kafka-1                 | 	kafka.metrics.reporters = []
+kafka-1                 | 	leader.imbalance.check.interval.seconds = 300
+kafka-1                 | 	leader.imbalance.per.broker.percentage = 10
+kafka-1                 | 	listener.security.protocol.map = CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+kafka-1                 | 	listeners = PLAINTEXT://:9092,CONTROLLER://:9093
+kafka-1                 | 	log.cleaner.backoff.ms = 15000
+kafka-1                 | 	log.cleaner.dedupe.buffer.size = 134217728
+kafka-1                 | 	log.cleaner.delete.retention.ms = 86400000
+kafka-1                 | 	log.cleaner.enable = true
+kafka-1                 | 	log.cleaner.io.buffer.load.factor = 0.9
+kafka-1                 | 	log.cleaner.io.buffer.size = 524288
+kafka-1                 | 	log.cleaner.io.max.bytes.per.second = 1.7976931348623157E308
+kafka-1                 | 	log.cleaner.max.compaction.lag.ms = 9223372036854775807
+kafka-1                 | 	log.cleaner.min.cleanable.ratio = 0.5
+kafka-1                 | 	log.cleaner.min.compaction.lag.ms = 0
+kafka-1                 | 	log.cleaner.threads = 1
+kafka-1                 | 	log.cleanup.policy = [delete]
+kafka-1                 | 	log.dir = /tmp/kafka-logs
+kafka-1                 | 	log.dirs = /bitnami/kafka/data
+kafka-1                 | 	log.flush.interval.messages = 9223372036854775807
+kafka-1                 | 	log.flush.interval.ms = null
+kafka-1                 | 	log.flush.offset.checkpoint.interval.ms = 60000
+kafka-1                 | 	log.flush.scheduler.interval.ms = 9223372036854775807
+kafka-1                 | 	log.flush.start.offset.checkpoint.interval.ms = 60000
+kafka-1                 | 	log.index.interval.bytes = 4096
+kafka-1                 | 	log.index.size.max.bytes = 10485760
+kafka-1                 | 	log.local.retention.bytes = -2
+kafka-1                 | 	log.local.retention.ms = -2
+kafka-1                 | 	log.message.downconversion.enable = true
+kafka-1                 | 	log.message.format.version = 3.0-IV1
+kafka-1                 | 	log.message.timestamp.after.max.ms = 9223372036854775807
+kafka-1                 | 	log.message.timestamp.before.max.ms = 9223372036854775807
+kafka-1                 | 	log.message.timestamp.difference.max.ms = 9223372036854775807
+kafka-1                 | 	log.message.timestamp.type = CreateTime
+kafka-1                 | 	log.preallocate = false
+kafka-1                 | 	log.retention.bytes = -1
+kafka-1                 | 	log.retention.check.interval.ms = 300000
+kafka-1                 | 	log.retention.hours = 168
+kafka-1                 | 	log.retention.minutes = null
+kafka-1                 | 	log.retention.ms = null
+kafka-1                 | 	log.roll.hours = 168
+kafka-1                 | 	log.roll.jitter.hours = 0
+kafka-1                 | 	log.roll.jitter.ms = null
+kafka-1                 | 	log.roll.ms = null
+kafka-1                 | 	log.segment.bytes = 1073741824
+kafka-1                 | 	log.segment.delete.delay.ms = 60000
+kafka-1                 | 	max.connection.creation.rate = 2147483647
+kafka-1                 | 	max.connections = 2147483647
+kafka-1                 | 	max.connections.per.ip = 2147483647
+kafka-1                 | 	max.connections.per.ip.overrides = 
+kafka-1                 | 	max.incremental.fetch.session.cache.slots = 1000
+kafka-1                 | 	message.max.bytes = 1048588
+kafka-1                 | 	metadata.log.dir = null
+kafka-1                 | 	metadata.log.max.record.bytes.between.snapshots = 20971520
+kafka-1                 | 	metadata.log.max.snapshot.interval.ms = 3600000
+kafka-1                 | 	metadata.log.segment.bytes = 1073741824
+kafka-1                 | 	metadata.log.segment.min.bytes = 8388608
+kafka-1                 | 	metadata.log.segment.ms = 604800000
+kafka-1                 | 	metadata.max.idle.interval.ms = 500
+kafka-1                 | 	metadata.max.retention.bytes = 104857600
+kafka-1                 | 	metadata.max.retention.ms = 604800000
+kafka-1                 | 	metric.reporters = []
+kafka-1                 | 	metrics.num.samples = 2
+kafka-1                 | 	metrics.recording.level = INFO
+kafka-1                 | 	metrics.sample.window.ms = 30000
+kafka-1                 | 	min.insync.replicas = 1
+kafka-1                 | 	node.id = 0
+kafka-1                 | 	num.io.threads = 8
+kafka-1                 | 	num.network.threads = 3
+kafka-1                 | 	num.partitions = 1
+kafka-1                 | 	num.recovery.threads.per.data.dir = 1
+kafka-1                 | 	num.replica.alter.log.dirs.threads = null
+kafka-1                 | 	num.replica.fetchers = 1
+kafka-1                 | 	offset.metadata.max.bytes = 4096
+kafka-1                 | 	offsets.commit.required.acks = -1
+kafka-1                 | 	offsets.commit.timeout.ms = 5000
+kafka-1                 | 	offsets.load.buffer.size = 5242880
+kafka-1                 | 	offsets.retention.check.interval.ms = 600000
+kafka-1                 | 	offsets.retention.minutes = 10080
+kafka-1                 | 	offsets.topic.compression.codec = 0
+kafka-1                 | 	offsets.topic.num.partitions = 50
+kafka-1                 | 	offsets.topic.replication.factor = 1
+kafka-1                 | 	offsets.topic.segment.bytes = 104857600
+kafka-1                 | 	password.encoder.cipher.algorithm = AES/CBC/PKCS5Padding
+kafka-1                 | 	password.encoder.iterations = 4096
+kafka-1                 | 	password.encoder.key.length = 128
+kafka-1                 | 	password.encoder.keyfactory.algorithm = null
+kafka-1                 | 	password.encoder.old.secret = null
+kafka-1                 | 	password.encoder.secret = null
+kafka-1                 | 	principal.builder.class = class org.apache.kafka.common.security.authenticator.DefaultKafkaPrincipalBuilder
+kafka-1                 | 	process.roles = [controller, broker]
+kafka-1                 | 	producer.id.expiration.check.interval.ms = 600000
+kafka-1                 | 	producer.id.expiration.ms = 86400000
+kafka-1                 | 	producer.purgatory.purge.interval.requests = 1000
+kafka-1                 | 	queued.max.request.bytes = -1
+kafka-1                 | 	queued.max.requests = 500
+kafka-1                 | 	quota.window.num = 11
+kafka-1                 | 	quota.window.size.seconds = 1
+kafka-1                 | 	remote.log.index.file.cache.total.size.bytes = 1073741824
+kafka-1                 | 	remote.log.manager.task.interval.ms = 30000
+kafka-1                 | 	remote.log.manager.task.retry.backoff.max.ms = 30000
+kafka-1                 | 	remote.log.manager.task.retry.backoff.ms = 500
+kafka-1                 | 	remote.log.manager.task.retry.jitter = 0.2
+kafka-1                 | 	remote.log.manager.thread.pool.size = 10
+kafka-1                 | 	remote.log.metadata.custom.metadata.max.bytes = 128
+kafka-1                 | 	remote.log.metadata.manager.class.name = org.apache.kafka.server.log.remote.metadata.storage.TopicBasedRemoteLogMetadataManager
+kafka-1                 | 	remote.log.metadata.manager.class.path = null
+kafka-1                 | 	remote.log.metadata.manager.impl.prefix = rlmm.config.
+kafka-1                 | 	remote.log.metadata.manager.listener.name = null
+kafka-1                 | 	remote.log.reader.max.pending.tasks = 100
+kafka-1                 | 	remote.log.reader.threads = 10
+kafka-1                 | 	remote.log.storage.manager.class.name = null
+kafka-1                 | 	remote.log.storage.manager.class.path = null
+kafka-1                 | 	remote.log.storage.manager.impl.prefix = rsm.config.
+kafka-1                 | 	remote.log.storage.system.enable = false
+kafka-1                 | 	replica.fetch.backoff.ms = 1000
+kafka-1                 | 	replica.fetch.max.bytes = 1048576
+kafka-1                 | 	replica.fetch.min.bytes = 1
+kafka-1                 | 	replica.fetch.response.max.bytes = 10485760
+kafka-1                 | 	replica.fetch.wait.max.ms = 500
+kafka-1                 | 	replica.high.watermark.checkpoint.interval.ms = 5000
+kafka-1                 | 	replica.lag.time.max.ms = 30000
+kafka-1                 | 	replica.selector.class = null
+kafka-1                 | 	replica.socket.receive.buffer.bytes = 65536
+kafka-1                 | 	replica.socket.timeout.ms = 30000
+kafka-1                 | 	replication.quota.window.num = 11
+kafka-1                 | 	replication.quota.window.size.seconds = 1
+kafka-1                 | 	request.timeout.ms = 30000
+kafka-1                 | 	reserved.broker.max.id = 1000
+kafka-1                 | 	sasl.client.callback.handler.class = null
+kafka-1                 | 	sasl.enabled.mechanisms = [PLAIN, SCRAM-SHA-256, SCRAM-SHA-512]
+kafka-1                 | 	sasl.jaas.config = null
+kafka-1                 | 	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+kafka-1                 | 	sasl.kerberos.min.time.before.relogin = 60000
+kafka-1                 | 	sasl.kerberos.principal.to.local.rules = [DEFAULT]
+kafka-1                 | 	sasl.kerberos.service.name = null
+kafka-1                 | 	sasl.kerberos.ticket.renew.jitter = 0.05
+kafka-1                 | 	sasl.kerberos.ticket.renew.window.factor = 0.8
+kafka-1                 | 	sasl.login.callback.handler.class = null
+kafka-1                 | 	sasl.login.class = null
+kafka-1                 | 	sasl.login.connect.timeout.ms = null
+kafka-1                 | 	sasl.login.read.timeout.ms = null
+kafka-1                 | 	sasl.login.refresh.buffer.seconds = 300
+kafka-1                 | 	sasl.login.refresh.min.period.seconds = 60
+kafka-1                 | 	sasl.login.refresh.window.factor = 0.8
+kafka-1                 | 	sasl.login.refresh.window.jitter = 0.05
+kafka-1                 | 	sasl.login.retry.backoff.max.ms = 10000
+kafka-1                 | 	sasl.login.retry.backoff.ms = 100
+kafka-1                 | 	sasl.mechanism.controller.protocol = GSSAPI
+kafka-1                 | 	sasl.mechanism.inter.broker.protocol = GSSAPI
+kafka-1                 | 	sasl.oauthbearer.clock.skew.seconds = 30
+kafka-1                 | 	sasl.oauthbearer.expected.audience = null
+kafka-1                 | 	sasl.oauthbearer.expected.issuer = null
+kafka-1                 | 	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+kafka-1                 | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+kafka-1                 | 	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+kafka-1                 | 	sasl.oauthbearer.jwks.endpoint.url = null
+kafka-1                 | 	sasl.oauthbearer.scope.claim.name = scope
+kafka-1                 | 	sasl.oauthbearer.sub.claim.name = sub
+kafka-1                 | 	sasl.oauthbearer.token.endpoint.url = null
+kafka-1                 | 	sasl.server.callback.handler.class = null
+kafka-1                 | 	sasl.server.max.receive.size = 524288
+kafka-1                 | 	security.inter.broker.protocol = PLAINTEXT
+kafka-1                 | 	security.providers = null
+kafka-1                 | 	server.max.startup.time.ms = 9223372036854775807
+kafka-1                 | 	socket.connection.setup.timeout.max.ms = 30000
+kafka-1                 | 	socket.connection.setup.timeout.ms = 10000
+kafka-1                 | 	socket.listen.backlog.size = 50
+kafka-1                 | 	socket.receive.buffer.bytes = 102400
+kafka-1                 | 	socket.request.max.bytes = 104857600
+kafka-1                 | 	socket.send.buffer.bytes = 102400
+kafka-1                 | 	ssl.cipher.suites = []
+kafka-1                 | 	ssl.client.auth = none
+kafka-1                 | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+kafka-1                 | 	ssl.endpoint.identification.algorithm = https
+kafka-1                 | 	ssl.engine.factory.class = null
+kafka-1                 | 	ssl.key.password = null
+kafka-1                 | 	ssl.keymanager.algorithm = SunX509
+kafka-1                 | 	ssl.keystore.certificate.chain = null
+kafka-1                 | 	ssl.keystore.key = null
+kafka-1                 | 	ssl.keystore.location = null
+kafka-1                 | 	ssl.keystore.password = null
+kafka-1                 | 	ssl.keystore.type = JKS
+kafka-1                 | 	ssl.principal.mapping.rules = DEFAULT
+kafka-1                 | 	ssl.protocol = TLSv1.3
+kafka-1                 | 	ssl.provider = null
+kafka-1                 | 	ssl.secure.random.implementation = null
+kafka-1                 | 	ssl.trustmanager.algorithm = PKIX
+kafka-1                 | 	ssl.truststore.certificates = null
+kafka-1                 | 	ssl.truststore.location = null
+kafka-1                 | 	ssl.truststore.password = null
+kafka-1                 | 	ssl.truststore.type = JKS
+kafka-1                 | 	transaction.abort.timed.out.transaction.cleanup.interval.ms = 10000
+kafka-1                 | 	transaction.max.timeout.ms = 900000
+kafka-1                 | 	transaction.partition.verification.enable = true
+kafka-1                 | 	transaction.remove.expired.transaction.cleanup.interval.ms = 3600000
+kafka-1                 | 	transaction.state.log.load.buffer.size = 5242880
+kafka-1                 | 	transaction.state.log.min.isr = 1
+kafka-1                 | 	transaction.state.log.num.partitions = 50
+kafka-1                 | 	transaction.state.log.replication.factor = 1
+kafka-1                 | 	transaction.state.log.segment.bytes = 104857600
+kafka-1                 | 	transactional.id.expiration.ms = 604800000
+kafka-1                 | 	unclean.leader.election.enable = false
+kafka-1                 | 	unstable.api.versions.enable = false
+kafka-1                 | 	zookeeper.clientCnxnSocket = null
+kafka-1                 | 	zookeeper.connect = null
+kafka-1                 | 	zookeeper.connection.timeout.ms = null
+kafka-1                 | 	zookeeper.max.in.flight.requests = 10
+kafka-1                 | 	zookeeper.metadata.migration.enable = false
+kafka-1                 | 	zookeeper.session.timeout.ms = 18000
+kafka-1                 | 	zookeeper.set.acl = false
+kafka-1                 | 	zookeeper.ssl.cipher.suites = null
+kafka-1                 | 	zookeeper.ssl.client.enable = false
+kafka-1                 | 	zookeeper.ssl.crl.enable = false
+kafka-1                 | 	zookeeper.ssl.enabled.protocols = null
+kafka-1                 | 	zookeeper.ssl.endpoint.identification.algorithm = HTTPS
+kafka-1                 | 	zookeeper.ssl.keystore.location = null
+kafka-1                 | 	zookeeper.ssl.keystore.password = null
+kafka-1                 | 	zookeeper.ssl.keystore.type = null
+kafka-1                 | 	zookeeper.ssl.ocsp.enable = false
+kafka-1                 | 	zookeeper.ssl.protocol = TLSv1.2
+kafka-1                 | 	zookeeper.ssl.truststore.location = null
+kafka-1                 | 	zookeeper.ssl.truststore.password = null
+kafka-1                 | 	zookeeper.ssl.truststore.type = null
+kafka-1                 |  (kafka.server.KafkaConfig)
+kafka-1                 | [2024-04-14 23:09:00,711] INFO [BrokerServer id=0] Waiting for the broker to be unfenced (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,712] INFO [QuorumController id=0] The request from broker 0 to unfence has been granted because it has caught up with the offset of its register broker record 5. (org.apache.kafka.controller.BrokerHeartbeatManager)
+kafka-1                 | [2024-04-14 23:09:00,717] INFO [QuorumController id=0] Replayed BrokerRegistrationChangeRecord modifying the registration for broker 0: BrokerRegistrationChangeRecord(brokerId=0, brokerEpoch=5, fenced=-1, inControlledShutdown=0) (org.apache.kafka.controller.ClusterControlManager)
+kafka-1                 | [2024-04-14 23:09:00,744] INFO [BrokerLifecycleManager id=0] The broker has been unfenced. Transitioning from RECOVERY to RUNNING. (kafka.server.BrokerLifecycleManager)
+kafka-1                 | [2024-04-14 23:09:00,744] INFO [BrokerServer id=0] Finished waiting for the broker to be unfenced (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,744] INFO authorizerStart completed for endpoint PLAINTEXT. Endpoint is now READY. (org.apache.kafka.server.network.EndpointReadyFutures)
+kafka-1                 | [2024-04-14 23:09:00,744] INFO [SocketServer listenerType=BROKER, nodeId=0] Enabling request processing. (kafka.network.SocketServer)
+kafka-1                 | [2024-04-14 23:09:00,744] INFO Awaiting socket connections on 0.0.0.0:9092. (kafka.network.DataPlaneAcceptor)
+kafka-1                 | [2024-04-14 23:09:00,745] INFO [BrokerServer id=0] Waiting for all of the authorizer futures to be completed (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,745] INFO [BrokerServer id=0] Finished waiting for all of the authorizer futures to be completed (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,745] INFO [BrokerServer id=0] Waiting for all of the SocketServer Acceptors to be started (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,745] INFO [BrokerServer id=0] Finished waiting for all of the SocketServer Acceptors to be started (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,745] INFO [BrokerServer id=0] Transition from STARTING to STARTED (kafka.server.BrokerServer)
+kafka-1                 | [2024-04-14 23:09:00,746] INFO Kafka version: 3.6.1 (org.apache.kafka.common.utils.AppInfoParser)
+kafka-1                 | [2024-04-14 23:09:00,746] INFO Kafka commitId: 5e3c2b738d253ff5 (org.apache.kafka.common.utils.AppInfoParser)
+kafka-1                 | [2024-04-14 23:09:00,746] INFO Kafka startTimeMs: 1713136140745 (org.apache.kafka.common.utils.AppInfoParser)
+kafka-1                 | [2024-04-14 23:09:00,747] INFO [KafkaRaftServer nodeId=0] Kafka Server started (kafka.server.KafkaRaftServer)
+kafka-connect-1         | [2024-04-14 23:09:01,195] INFO Kafka cluster ID: mB2xGShYR6ecGED0URgstA (org.apache.kafka.connect.runtime.WorkerConfig:300)
+kafka-connect-1         | [2024-04-14 23:09:01,196] INFO App info kafka.admin.client for adminclient-1 unregistered (org.apache.kafka.common.utils.AppInfoParser:83)
+kafka-connect-1         | [2024-04-14 23:09:01,200] INFO Metrics scheduler closed (org.apache.kafka.common.metrics.Metrics:693)
+kafka-connect-1         | [2024-04-14 23:09:01,200] INFO Closing reporter org.apache.kafka.common.metrics.JmxReporter (org.apache.kafka.common.metrics.Metrics:697)
+kafka-connect-1         | [2024-04-14 23:09:01,200] INFO Metrics reporters closed (org.apache.kafka.common.metrics.Metrics:703)
+kafka-connect-1         | [2024-04-14 23:09:01,202] INFO PublicConfig values: 
+kafka-connect-1         | 	access.control.allow.methods = 
+kafka-connect-1         | 	access.control.allow.origin = 
+kafka-connect-1         | 	admin.listeners = null
+kafka-connect-1         | 	listeners = [http://:8083]
+kafka-connect-1         | 	response.http.headers.config = 
+kafka-connect-1         | 	rest.advertised.host.name = null
+kafka-connect-1         | 	rest.advertised.listener = null
+kafka-connect-1         | 	rest.advertised.port = null
+kafka-connect-1         | 	rest.extension.classes = []
+kafka-connect-1         | 	ssl.cipher.suites = null
+kafka-connect-1         | 	ssl.client.auth = none
+kafka-connect-1         | 	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+kafka-connect-1         | 	ssl.endpoint.identification.algorithm = https
+kafka-connect-1         | 	ssl.engine.factory.class = null
+kafka-connect-1         | 	ssl.key.password = null
+kafka-connect-1         | 	ssl.keymanager.algorithm = SunX509
+kafka-connect-1         | 	ssl.keystore.certificate.chain = null
+kafka-connect-1         | 	ssl.keystore.key = null
+kafka-connect-1         | 	ssl.keystore.location = null
+kafka-connect-1         | 	ssl.keystore.password = null
+kafka-connect-1         | 	ssl.keystore.type = JKS
+kafka-connect-1         | 	ssl.protocol = TLSv1.3
+kafka-connect-1         | 	ssl.provider = null
+kafka-connect-1         | 	ssl.secure.random.implementation = null
+kafka-connect-1         | 	ssl.trustmanager.algorithm = PKIX
+kafka-connect-1         | 	ssl.truststore.certificates = null
+kafka-connect-1         | 	ssl.truststore.location = null
+kafka-connect-1         | 	ssl.truststore.password = null
+kafka-connect-1         | 	ssl.truststore.type = JKS
+kafka-connect-1         | 	topic.tracking.allow.reset = true
+kafka-connect-1         | 	topic.tracking.enable = true
+kafka-connect-1         |  (org.apache.kafka.connect.runtime.rest.RestServerConfig$PublicConfig:370)
+kafka-connect-1         | [2024-04-14 23:09:01,207] INFO Logging initialized @4756ms to org.eclipse.jetty.util.log.Slf4jLog (org.eclipse.jetty.util.log:170)
+kafka-connect-1         | [2024-04-14 23:09:01,226] INFO Added connector for http://:8083 (org.apache.kafka.connect.runtime.rest.RestServer:111)
+kafka-connect-1         | [2024-04-14 23:09:01,226] INFO Initializing REST server (org.apache.kafka.connect.runtime.rest.RestServer:182)
+kafka-connect-1         | [2024-04-14 23:09:01,238] INFO jetty-9.4.52.v20230823; built: 2023-08-23T19:29:37.669Z; git: abdcda73818a1a2c705da276edb0bf6581e7997e; jvm 17.0.9+11-LTS (org.eclipse.jetty.server.Server:375)
+kafka_connect_config-1  | Reading package lists...
+kafka-connect-1         | [2024-04-14 23:09:01,250] INFO Started http_8083@46e64760{HTTP/1.1, (http/1.1)}{0.0.0.0:8083} (org.eclipse.jetty.server.AbstractConnector:333)
+kafka-connect-1         | [2024-04-14 23:09:01,250] INFO Started @4799ms (org.eclipse.jetty.server.Server:415)
+kafka-connect-1         | [2024-04-14 23:09:01,259] INFO Advertised URI: http://172.19.0.3:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:394)
+kafka-connect-1         | [2024-04-14 23:09:01,260] INFO REST server listening at http://172.19.0.3:8083/, advertising URL http://172.19.0.3:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:202)
+kafka-connect-1         | [2024-04-14 23:09:01,260] INFO Advertised URI: http://172.19.0.3:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:394)
+kafka-connect-1         | [2024-04-14 23:09:01,260] INFO REST admin endpoints at http://172.19.0.3:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:205)
+kafka-connect-1         | [2024-04-14 23:09:01,260] INFO Advertised URI: http://172.19.0.3:8083/ (org.apache.kafka.connect.runtime.rest.RestServer:394)
+kafka-connect-1         | [2024-04-14 23:09:01,260] INFO Setting up All Policy for ConnectorClientConfigOverride. This will allow all client configurations to be overridden (org.apache.kafka.connect.connector.policy.AllConnectorClientConfigOverridePolicy:44)
+kafka-connect-1         | [2024-04-14 23:09:01,261] INFO JsonConverterConfig values: 
+kafka-connect-1         | 	converter.type = key
+kafka-connect-1         | 	decimal.format = BASE64
+kafka-connect-1         | 	replace.null.with.default = true
+kafka-connect-1         | 	schemas.cache.size = 1000
+kafka-connect-1         | 	schemas.enable = false
+kafka-connect-1         |  (org.apache.kafka.connect.json.JsonConverterConfig:370)
+kafka-connect-1         | [2024-04-14 23:09:01,267] INFO Kafka version: 3.6.1 (org.apache.kafka.common.utils.AppInfoParser:119)
+kafka-connect-1         | [2024-04-14 23:09:01,267] INFO Kafka commitId: 5e3c2b738d253ff5 (org.apache.kafka.common.utils.AppInfoParser:120)
+kafka-connect-1         | [2024-04-14 23:09:01,267] INFO Kafka startTimeMs: 1713136141267 (org.apache.kafka.common.utils.AppInfoParser:121)
+kafka-connect-1         | [2024-04-14 23:09:01,271] INFO JsonConverterConfig values: 
+kafka-connect-1         | 	converter.type = key
+kafka-connect-1         | 	decimal.format = BASE64
+kafka-connect-1         | 	replace.null.with.default = true
+kafka-connect-1         | 	schemas.cache.size = 1000
+kafka-connect-1         | 	schemas.enable = false
+kafka-connect-1         |  (org.apache.kafka.connect.json.JsonConverterConfig:370)
+kafka-connect-1         | [2024-04-14 23:09:01,271] INFO JsonConverterConfig values: 
+kafka-connect-1         | 	converter.type = value
+kafka-connect-1         | 	decimal.format = BASE64
+kafka-connect-1         | 	replace.null.with.default = true
+kafka-connect-1         | 	schemas.cache.size = 1000
+kafka-connect-1         | 	schemas.enable = false
+kafka-connect-1         |  (org.apache.kafka.connect.json.JsonConverterConfig:370)
+kafka-connect-1         | [2024-04-14 23:09:01,275] INFO Kafka Connect worker initialization took 4525ms (org.apache.kafka.connect.cli.AbstractConnectCli:141)
+kafka-connect-1         | [2024-04-14 23:09:01,275] INFO Kafka Connect starting (org.apache.kafka.connect.runtime.Connect:51)
+kafka-connect-1         | [2024-04-14 23:09:01,276] INFO Herder starting (org.apache.kafka.connect.runtime.standalone.StandaloneHerder:103)
+kafka-connect-1         | [2024-04-14 23:09:01,276] INFO Worker starting (org.apache.kafka.connect.runtime.Worker:230)
+kafka-connect-1         | [2024-04-14 23:09:01,277] INFO Starting FileOffsetBackingStore with file /tmp/connect.offsets (org.apache.kafka.connect.storage.FileOffsetBackingStore:63)
+kafka-connect-1         | [2024-04-14 23:09:01,278] INFO Worker started (org.apache.kafka.connect.runtime.Worker:240)
+kafka-connect-1         | [2024-04-14 23:09:01,278] INFO Herder started (org.apache.kafka.connect.runtime.standalone.StandaloneHerder:106)
+kafka-connect-1         | [2024-04-14 23:09:01,278] INFO Initializing REST resources (org.apache.kafka.connect.runtime.rest.RestServer:209)
+kafka-connect-1         | [2024-04-14 23:09:01,297] INFO Adding admin resources to main listener (org.apache.kafka.connect.runtime.rest.RestServer:227)
+kafka-connect-1         | [2024-04-14 23:09:01,317] INFO DefaultSessionIdManager workerName=node0 (org.eclipse.jetty.server.session:334)
+kafka-connect-1         | [2024-04-14 23:09:01,317] INFO No SessionScavenger set, using defaults (org.eclipse.jetty.server.session:339)
+kafka-connect-1         | [2024-04-14 23:09:01,317] INFO node0 Scavenging every 600000ms (org.eclipse.jetty.server.session:132)
+kafka_connect_config-1  | Building dependency tree...
+kafka_connect_config-1  | Reading state information...
+kafka_connect_config-1  | The following additional packages will be installed:
+kafka_connect_config-1  |   ca-certificates libbrotli1 libcurl4 libldap-2.5-0 libldap-common
+kafka_connect_config-1  |   libnghttp2-14 libpsl5 librtmp1 libsasl2-2 libsasl2-modules
+kafka_connect_config-1  |   libsasl2-modules-db libssh-4 openssl publicsuffix
+kafka_connect_config-1  | Suggested packages:
+kafka_connect_config-1  |   libsasl2-modules-gssapi-mit | libsasl2-modules-gssapi-heimdal
+kafka_connect_config-1  |   libsasl2-modules-ldap libsasl2-modules-otp libsasl2-modules-sql
+kafka-connect-1         | [2024-04-14 23:09:01,567] INFO Started o.e.j.s.ServletContextHandler@72976b4{/,null,AVAILABLE} (org.eclipse.jetty.server.handler.ContextHandler:921)
+kafka-connect-1         | [2024-04-14 23:09:01,567] INFO REST resources initialized; server is started and ready to handle requests (org.apache.kafka.connect.runtime.rest.RestServer:302)
+kafka-connect-1         | [2024-04-14 23:09:01,567] INFO Kafka Connect started (org.apache.kafka.connect.runtime.Connect:57)
+kafka_connect_config-1  | The following NEW packages will be installed:
+kafka_connect_config-1  |   ca-certificates curl libbrotli1 libcurl4 libldap-2.5-0 libldap-common
+kafka_connect_config-1  |   libnghttp2-14 libpsl5 librtmp1 libsasl2-2 libsasl2-modules
+kafka_connect_config-1  |   libsasl2-modules-db libssh-4 openssl publicsuffix
+kafka_connect_config-1  | 0 upgraded, 15 newly installed, 0 to remove and 33 not upgraded.
+kafka_connect_config-1  | Need to get 2991 kB of archives.
+kafka_connect_config-1  | After this operation, 7124 kB of additional disk space will be used.
+kafka_connect_config-1  | Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssl amd64 3.0.2-0ubuntu1.15 [1186 kB]
+kafka_connect_config-1  | Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ca-certificates all 20230311ubuntu0.22.04.1 [155 kB]
+kafka_connect_config-1  | Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnghttp2-14 amd64 1.43.0-1ubuntu0.1 [76.7 kB]
+kafka_connect_config-1  | Get:4 http://archive.ubuntu.com/ubuntu jammy/main amd64 libpsl5 amd64 0.21.0-1.2build2 [58.4 kB]
+kafka_connect_config-1  | Get:5 http://archive.ubuntu.com/ubuntu jammy/main amd64 publicsuffix all 20211207.1025-1 [129 kB]
+kafka_connect_config-1  | Get:6 http://archive.ubuntu.com/ubuntu jammy/main amd64 libbrotli1 amd64 1.0.9-2build6 [315 kB]
+kafka_connect_config-1  | Get:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libsasl2-modules-db amd64 2.1.27+dfsg2-3ubuntu1.2 [20.5 kB]
+kafka_connect_config-1  | Get:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libsasl2-2 amd64 2.1.27+dfsg2-3ubuntu1.2 [53.8 kB]
+kafka_connect_config-1  | Get:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libldap-2.5-0 amd64 2.5.17+dfsg-0ubuntu0.22.04.1 [183 kB]
+kafka_connect_config-1  | Get:10 http://archive.ubuntu.com/ubuntu jammy/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2build4 [58.2 kB]
+kafka_connect_config-1  | Get:11 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssh-4 amd64 0.9.6-2ubuntu0.22.04.3 [186 kB]
+kafka_connect_config-1  | Get:12 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcurl4 amd64 7.81.0-1ubuntu1.16 [290 kB]
+kafka_connect_config-1  | Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 curl amd64 7.81.0-1ubuntu1.16 [194 kB]
+kafka_connect_config-1  | Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libldap-common all 2.5.17+dfsg-0ubuntu0.22.04.1 [15.8 kB]
+kafka_connect_config-1  | Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libsasl2-modules amd64 2.1.27+dfsg2-3ubuntu1.2 [68.8 kB]
+kafka_connect_config-1  | Fetched 2991 kB in 2s (1786 kB/s)
+kafka_connect_config-1  | Selecting previously unselected package openssl.
+kafka_connect_config-1  | (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4395 files and directories currently installed.)
+kafka_connect_config-1  | Preparing to unpack .../00-openssl_3.0.2-0ubuntu1.15_amd64.deb ...
+kafka_connect_config-1  | Unpacking openssl (3.0.2-0ubuntu1.15) ...
+kafka_connect_config-1  | Selecting previously unselected package ca-certificates.
+kafka_connect_config-1  | Preparing to unpack .../01-ca-certificates_20230311ubuntu0.22.04.1_all.deb ...
+kafka_connect_config-1  | Unpacking ca-certificates (20230311ubuntu0.22.04.1) ...
+kafka_connect_config-1  | Selecting previously unselected package libnghttp2-14:amd64.
+kafka_connect_config-1  | Preparing to unpack .../02-libnghttp2-14_1.43.0-1ubuntu0.1_amd64.deb ...
+kafka_connect_config-1  | Unpacking libnghttp2-14:amd64 (1.43.0-1ubuntu0.1) ...
+kafka_connect_config-1  | Selecting previously unselected package libpsl5:amd64.
+kafka_connect_config-1  | Preparing to unpack .../03-libpsl5_0.21.0-1.2build2_amd64.deb ...
+kafka_connect_config-1  | Unpacking libpsl5:amd64 (0.21.0-1.2build2) ...
+kafka_connect_config-1  | Selecting previously unselected package publicsuffix.
+kafka_connect_config-1  | Preparing to unpack .../04-publicsuffix_20211207.1025-1_all.deb ...
+kafka_connect_config-1  | Unpacking publicsuffix (20211207.1025-1) ...
+kafka_connect_config-1  | Selecting previously unselected package libbrotli1:amd64.
+kafka_connect_config-1  | Preparing to unpack .../05-libbrotli1_1.0.9-2build6_amd64.deb ...
+kafka_connect_config-1  | Unpacking libbrotli1:amd64 (1.0.9-2build6) ...
+kafka_connect_config-1  | Selecting previously unselected package libsasl2-modules-db:amd64.
+kafka_connect_config-1  | Preparing to unpack .../06-libsasl2-modules-db_2.1.27+dfsg2-3ubuntu1.2_amd64.deb ...
+kafka_connect_config-1  | Unpacking libsasl2-modules-db:amd64 (2.1.27+dfsg2-3ubuntu1.2) ...
+kafka_connect_config-1  | Selecting previously unselected package libsasl2-2:amd64.
+kafka_connect_config-1  | Preparing to unpack .../07-libsasl2-2_2.1.27+dfsg2-3ubuntu1.2_amd64.deb ...
+kafka_connect_config-1  | Unpacking libsasl2-2:amd64 (2.1.27+dfsg2-3ubuntu1.2) ...
+kafka_connect_config-1  | Selecting previously unselected package libldap-2.5-0:amd64.
+kafka_connect_config-1  | Preparing to unpack .../08-libldap-2.5-0_2.5.17+dfsg-0ubuntu0.22.04.1_amd64.deb ...
+kafka_connect_config-1  | Unpacking libldap-2.5-0:amd64 (2.5.17+dfsg-0ubuntu0.22.04.1) ...
+kafka_connect_config-1  | Selecting previously unselected package librtmp1:amd64.
+kafka_connect_config-1  | Preparing to unpack .../09-librtmp1_2.4+20151223.gitfa8646d.1-2build4_amd64.deb ...
+kafka_connect_config-1  | Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build4) ...
+kafka_connect_config-1  | Selecting previously unselected package libssh-4:amd64.
+kafka_connect_config-1  | Preparing to unpack .../10-libssh-4_0.9.6-2ubuntu0.22.04.3_amd64.deb ...
+kafka_connect_config-1  | Unpacking libssh-4:amd64 (0.9.6-2ubuntu0.22.04.3) ...
+kafka_connect_config-1  | Selecting previously unselected package libcurl4:amd64.
+kafka_connect_config-1  | Preparing to unpack .../11-libcurl4_7.81.0-1ubuntu1.16_amd64.deb ...
+kafka_connect_config-1  | Unpacking libcurl4:amd64 (7.81.0-1ubuntu1.16) ...
+kafka_connect_config-1  | Selecting previously unselected package curl.
+kafka_connect_config-1  | Preparing to unpack .../12-curl_7.81.0-1ubuntu1.16_amd64.deb ...
+kafka_connect_config-1  | Unpacking curl (7.81.0-1ubuntu1.16) ...
+kafka_connect_config-1  | Selecting previously unselected package libldap-common.
+kafka_connect_config-1  | Preparing to unpack .../13-libldap-common_2.5.17+dfsg-0ubuntu0.22.04.1_all.deb ...
+kafka_connect_config-1  | Unpacking libldap-common (2.5.17+dfsg-0ubuntu0.22.04.1) ...
+kafka_connect_config-1  | Selecting previously unselected package libsasl2-modules:amd64.
+kafka_connect_config-1  | Preparing to unpack .../14-libsasl2-modules_2.1.27+dfsg2-3ubuntu1.2_amd64.deb ...
+kafka_connect_config-1  | Unpacking libsasl2-modules:amd64 (2.1.27+dfsg2-3ubuntu1.2) ...
+kafka_connect_config-1  | Setting up libpsl5:amd64 (0.21.0-1.2build2) ...
+kafka_connect_config-1  | Setting up libbrotli1:amd64 (1.0.9-2build6) ...
+kafka_connect_config-1  | Setting up libsasl2-modules:amd64 (2.1.27+dfsg2-3ubuntu1.2) ...
+kafka_connect_config-1  | Setting up libnghttp2-14:amd64 (1.43.0-1ubuntu0.1) ...
+kafka_connect_config-1  | Setting up libldap-common (2.5.17+dfsg-0ubuntu0.22.04.1) ...
+kafka_connect_config-1  | Setting up libsasl2-modules-db:amd64 (2.1.27+dfsg2-3ubuntu1.2) ...
+kafka_connect_config-1  | Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build4) ...
+kafka_connect_config-1  | Setting up libsasl2-2:amd64 (2.1.27+dfsg2-3ubuntu1.2) ...
+kafka_connect_config-1  | Setting up libssh-4:amd64 (0.9.6-2ubuntu0.22.04.3) ...
+kafka_connect_config-1  | Setting up openssl (3.0.2-0ubuntu1.15) ...
+kafka_connect_config-1  | Setting up publicsuffix (20211207.1025-1) ...
+kafka_connect_config-1  | Setting up libldap-2.5-0:amd64 (2.5.17+dfsg-0ubuntu0.22.04.1) ...
+kafka_connect_config-1  | Setting up ca-certificates (20230311ubuntu0.22.04.1) ...
+kafka_connect_config-1  | debconf: unable to initialize frontend: Dialog
+kafka_connect_config-1  | debconf: (TERM is not set, so the dialog frontend is not usable.)
+kafka_connect_config-1  | debconf: falling back to frontend: Readline
+kafka_connect_config-1  | debconf: unable to initialize frontend: Readline
+kafka_connect_config-1  | debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.34.0 /usr/local/share/perl/5.34.0 /usr/lib/x86_64-linux-gnu/perl5/5.34 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.34 /usr/share/perl/5.34 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+kafka_connect_config-1  | debconf: falling back to frontend: Teletype
+kafka_connect_config-1  | Updating certificates in /etc/ssl/certs...
+kafka_connect_config-1  | 137 added, 0 removed; done.
+kafka_connect_config-1  | Setting up libcurl4:amd64 (7.81.0-1ubuntu1.16) ...
+kafka_connect_config-1  | Setting up curl (7.81.0-1ubuntu1.16) ...
+kafka_connect_config-1  | Processing triggers for libc-bin (2.35-0ubuntu3.3) ...
+kafka_connect_config-1  | Processing triggers for ca-certificates (20230311ubuntu0.22.04.1) ...
+kafka_connect_config-1  | Updating certificates in /etc/ssl/certs...
+kafka_connect_config-1  | 0 added, 0 removed; done.
+kafka_connect_config-1  | Running hooks in /etc/ca-certificates/update.d...
+kafka_connect_config-1  | done.
+kafka_connect_config-1  | Sun Apr 14 23:09:05 UTC 2024 Kafka Connect HTTP state: 200 (waiting for 200)
+kafka_connect_config-1  | Registering debezium mssqlserver  connector
+kafka-connect-1         | [2024-04-14 23:09:05,696] INFO 172.19.0.4 - - [14/Apr/2024:23:09:05 +0000] "GET /connectors HTTP/1.1" 200 2 "-" "curl/7.81.0" 39 (org.apache.kafka.connect.runtime.rest.RestServer:62)
+kafka-connect-1         | [2024-04-14 23:09:05,770] INFO Loading the custom source info struct maker plugin: io.debezium.connector.sqlserver.SqlServerSourceInfoStructMaker (io.debezium.config.CommonConnectorConfig:1318)
+kafka-connect-1         | [2024-04-14 23:09:35,811] ERROR Failed testing connection for {connector.class=io.debezium.connector.sqlserver.SqlServerConnector, database.user=sa, topic.prefix=data_producer_stream, database.names=test_producer, database.hostname=192.168.16.2, database.password=********, name=client-table-connector, schema.history.internal.kafka.bootstrap.servers=kafka:9092, table.include.list=dbo.client, database.port=1433} with user '[database.user,null,[],[],true]' (io.debezium.connector.sqlserver.SqlServerConnector:146)
+kafka-connect-1         | com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host 192.168.16.2, port 1433 has failed. Error: "Connect timed out. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:231)
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:282)
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2578)
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:719)
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:3523)
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3172)
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3014)
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:1836)
+kafka-connect-1         | 	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1246)
+kafka-connect-1         | 	at io.debezium.jdbc.JdbcConnection.lambda$patternBasedFactory$1(JdbcConnection.java:243)
+kafka-connect-1         | 	at io.debezium.jdbc.JdbcConnection$ConnectionFactoryDecorator.connect(JdbcConnection.java:129)
+kafka-connect-1         | 	at io.debezium.jdbc.JdbcConnection.connection(JdbcConnection.java:875)
+kafka-connect-1         | 	at io.debezium.connector.sqlserver.SqlServerConnection.connection(SqlServerConnection.java:241)
+kafka-connect-1         | 	at io.debezium.jdbc.JdbcConnection.connection(JdbcConnection.java:870)
+kafka-connect-1         | 	at io.debezium.jdbc.JdbcConnection.execute(JdbcConnection.java:432)
+kafka-connect-1         | 	at io.debezium.jdbc.JdbcConnection.execute(JdbcConnection.java:411)
+kafka-connect-1         | 	at io.debezium.connector.sqlserver.SqlServerConnector.validateConnection(SqlServerConnector.java:125)
+kafka-connect-1         | 	at io.debezium.connector.common.RelationalBaseSourceConnector.validate(RelationalBaseSourceConnector.java:42)
+kafka-connect-1         | 	at org.apache.kafka.connect.runtime.AbstractHerder.validateConnectorConfig(AbstractHerder.java:509)
+kafka-connect-1         | 	at org.apache.kafka.connect.runtime.AbstractHerder.lambda$validateConnectorConfig$2(AbstractHerder.java:390)
+kafka-connect-1         | 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+kafka-connect-1         | 	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+kafka-connect-1         | 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+kafka-connect-1         | 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+kafka-connect-1         | 	at java.base/java.lang.Thread.run(Thread.java:840)
+kafka-connect-1         | [2024-04-14 23:09:35,814] INFO AbstractConfig values: 
+kafka-connect-1         |  (org.apache.kafka.common.config.AbstractConfig:370)
+kafka-connect-1         | [2024-04-14 23:09:35,825] INFO 172.19.0.4 - - [14/Apr/2024:23:09:05 +0000] "POST /connectors HTTP/1.1" 400 607 "-" "curl/7.81.0" 30129 (org.apache.kafka.connect.runtime.rest.RestServer:62)
+kafka_connect_config-1  | {"error_code":400,"message":"Connector configuration is invalid and contains the following 1 error(s):\nUnable to connect. Check this and other connection properties. Error: The TCP/IP connection to the host 192.168.16.2, port 1433 has failed. Error: \"Connect timed out. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.\".\nYou can also find the above list of errors at the endpoint `/connector-plugins/{connectorType}/config/validate`"}
+kafka_connect_config-1 exited with code 0
+kafka-connect-1         | [2024-04-14 23:09:36,894] INFO 172.19.0.1 - - [14/Apr/2024:23:09:36 +0000] "GET /connector-plugins HTTP/1.1" 200 411 "-" "curl/7.88.1" 6 (org.apache.kafka.connect.runtime.rest.RestServer:62)
+kafka-1                 | [2024-04-15 00:09:00,603] INFO [SnapshotGenerator id=0] Creating new KRaft snapshot file snapshot 00000000000000007206-0000000001 because we have waited at least 60 minute(s). (org.apache.kafka.image.publisher.SnapshotGenerator)
+kafka-1                 | [2024-04-15 00:09:00,618] INFO [SnapshotEmitter id=0] Successfully wrote snapshot 00000000000000007206-0000000001 (org.apache.kafka.image.publisher.SnapshotEmitter)
+kafka-1                 | [2024-04-15 01:09:01,058] INFO [SnapshotGenerator id=0] Creating new KRaft snapshot file snapshot 00000000000000014406-0000000001 because we have waited at least 60 minute(s). (org.apache.kafka.image.publisher.SnapshotGenerator)
+kafka-1                 | [2024-04-15 01:09:01,068] INFO [SnapshotEmitter id=0] Successfully wrote snapshot 00000000000000014406-0000000001 (org.apache.kafka.image.publisher.SnapshotEmitter)
+kafka-1                 | [2024-04-15 10:48:54,457] INFO [QuorumController id=0] Fencing broker 0 because its session has timed out. (org.apache.kafka.controller.ReplicationControlManager)
+kafka-1                 | [2024-04-15 10:48:54,466] INFO [QuorumController id=0] Replayed BrokerRegistrationChangeRecord modifying the registration for broker 0: BrokerRegistrationChangeRecord(brokerId=0, brokerEpoch=5, fenced=1, inControlledShutdown=0) (org.apache.kafka.controller.ClusterControlManager)
+kafka-1                 | [2024-04-15 10:48:54,467] INFO [QuorumController id=0] The request from broker 0 to unfence has been granted because it has caught up with the offset of its register broker record 5. (org.apache.kafka.controller.BrokerHeartbeatManager)
+kafka-1                 | [2024-04-15 10:48:54,467] INFO [QuorumController id=0] Replayed BrokerRegistrationChangeRecord modifying the registration for broker 0: BrokerRegistrationChangeRecord(brokerId=0, brokerEpoch=5, fenced=-1, inControlledShutdown=0) (org.apache.kafka.controller.ClusterControlManager)
