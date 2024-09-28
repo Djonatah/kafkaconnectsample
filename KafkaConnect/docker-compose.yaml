@@ -1,6 +1,38 @@
 services:
+  in-db:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Password123#"
+    ports:
+      - "1433:1433"
+    networks:
+      - app-tier
+    healthcheck:
+      test: [ "CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P ${Sa_Password:-Password123#} -Q 'SELECT 1' || exit 1" ]
+      interval: 10s
+      retries: 10
+      start_period: 10s
+      timeout: 3s
+  start-in-db:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    depends_on:
+      in-db:
+        condition: service_healthy
+    networks:
+      - app-tier
+    volumes:
+      - ./in_db_init:/home/script
+    command:
+      - bash
+      - -c
+#      - cat /home/script/init.sql
+#      - echo "finishing cat"
+      - /opt/mssql-tools/bin/sqlcmd -S in-db -U sa -P Password123# -d master -i /home/script/init.sql
   kafka:
     build: .
+    depends_on:
+      - start-in-db
     networks:
       - app-tier
     ports:
@@ -49,14 +81,15 @@ services:
               "name": "client-table-connector",
               "config": {
                 "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
-                "database.hostname": "192.168.16.2",
+                "database.hostname": "in-db",
                 "database.port": "1433",
                 "database.user": "sa",
                 "database.password": "Password123#",
                 "database.names": "test_producer",
+                "database.trustServerCertificate": true,
                 "topic.prefix": "data_producer_stream",
                 "table.include.list": "dbo.client",
-                "schema.history.internal.kafka.bootstrap.servers": "kafka:9092"
+                "schema.history.internal.kafka.bootstrap.servers": "kafka:9092"        
               }
             }'
 #
@@ -92,7 +125,5 @@ services:
 #    depends_on:
 #      - kafka
 networks:
-  name: testdj
-
   app-tier:
     driver: bridge
